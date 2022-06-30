@@ -1,0 +1,17 @@
+{
+    "name": "heligon/myblog",
+    "description": "Projet 5 de la formation openclassRoom",
+    "authors": [
+        {
+            "name": "sebastien",
+            "email": "heligon.seb@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+    }
+}
