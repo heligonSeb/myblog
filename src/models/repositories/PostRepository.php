@@ -24,4 +24,36 @@ class PostRepository
         $q = $this->db->prepare($query);
         $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
     }
+
+    /**
+     * Get all the Post from database
+     * @return {Array}
+     */
+    public function getPostList() {
+        $query = 'SELECT * FROM ' . $this->table;
+        
+        $q = $this->db->prepare($query);
+        $q->execute();
+        $result = $q->fetchAll(\PDO::FETCH_CLASS, Post::class);
+
+        return $result;
+    }
+
+    /**
+     * Get one post from database with id as match
+     * @param {String}      l'id du post
+     * 
+     * @return {Object}
+     */
+    public function getPost($id) {
+        $query = 'SELECT * FROM '.$this->table.' WHERE id=:id';
+
+        $q = $this->db->prepare($query);
+        $q->execute(['id' => intval($id)]);
+        $q->setFetchMode(\PDO::FETCH_CLASS, Post::class);
+        
+        $result = $q->fetch();
+
+        return $result;
+    }
 }

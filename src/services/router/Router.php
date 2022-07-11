@@ -5,6 +5,7 @@ namespace App\services\router;
 use App\controllers\HomeController;
 use App\controllers\ErrorController;
 use App\controllers\PostController;
+use App\controllers\CommentsController;
 
 class Router
 {
@@ -18,8 +19,11 @@ class Router
                 } else {
                     if(isset($_GET['action']) && $_GET['action'] == "add") {
                         (new PostController())->actionAdd();
-                    } else {
-                        (new PostController())->list();
+                    } elseif (isset($_GET['action']) && $_GET['action'] == "addComment") {
+                        (new CommentsController())->actionAdd();
+                    } 
+                    else {
+                        (new PostController())->getList();
                     }
                 }
                 break;

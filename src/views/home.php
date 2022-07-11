@@ -1,20 +1,4 @@
 <?php ob_start(); ?>
-    <nav class="navbar navbar-expend-lg bg-secondary">
-        <div class="container-fluid">
-            <div>
-                <img class="w-25" src="src/views/templates/media/logo-logo.png" alt="mon logo" />
-            </div>
-
-            <div class="fs-1 text-white" >
-                <a href="public/login" class="text-decoration-none text-white">
-                    <i class="bi bi-person-fill"></i>
-                </a>
-
-                <i class="bi bi-list"></i>
-            </div>
-        </div>
-    </nav>
-
     <section id="intro" class="bg-img">
         <div class="text-white text-center">
             <h1>Héligon Sébastien</h1>
@@ -27,7 +11,7 @@
         <!-- <img src="" alt="mon cv"/> -->
 
         <div class="text-center">
-            <div>Vous voulez mieux me connaitre, n'hésiter pas à consulter mon CV</div>
+            <div>Vous voulez mieux me connaitre, n'hésitez pas à consulter mon CV</div>
 
             <button type="button" class="btn btn-primary">
                 <i class="bi bi-file-earmark-pdf-fill"></i>
@@ -37,7 +21,7 @@
     </section>
 
     <section id="contact">
-        <h2 class="text-center">Besoins de moi ?</h2>
+        <h2 class="text-center">Besoin de moi ?</h2>
 
         <form action="" method="POST" class="form px-2">
             <div>
@@ -74,21 +58,6 @@
             </button>
         </form>
     </section>
-
-    <footer class="bg-dark text-white">
-        <div>
-            <ul>
-                <li>Home</li>
-                <li>Post</li>
-            </ul>
-        </div>
-
-        <div>
-            <i class="bi bi-linkedin"></i>
-        </div>
-
-        <div>Fait avec amour <i class="bi bi-heart-fill"></i> par Sébastien Héligon</div>
-    </footer>
 <?php $content = ob_get_clean(); ?>
 
 <?php include '../src/views/templates/html.php' ?>
