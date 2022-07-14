@@ -25,6 +25,13 @@ class PostRepository
         $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
     }
 
+    public function edit($title, $intro, $content, $id) {
+        $query = 'UPDATE '. $this->table . ' SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
+
+        $q = $this->db->prepare($query);
+        $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
+    }
+
     /**
      * Get all the Post from database
      * @return {Array}

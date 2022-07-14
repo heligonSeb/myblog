@@ -9,11 +9,17 @@ class Users
     public $lastname;
     public $firstname;
     public $email;
-    public $password;
+    private $password;
     public $validate;
     public $status;
 
     public function fullName() {
         return ucfirst($this->lastname) .' '. ucfirst($this->firstname);
+    }
+
+    public function checkPassWord($password) {
+        
+
+        return $this->password === $password;
     }
 }

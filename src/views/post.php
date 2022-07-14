@@ -3,7 +3,7 @@
         <div>
             <div>
                 <div>
-                    <h2><?= $post->title ?></h2>
+                    <h1><?= $post->title ?></h1>
                     
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editPost">
                         edit
@@ -12,6 +12,7 @@
         
                 <div>
                     Ecrie par <?= $user->fullName() ?> le 
+                    <!-- FORMATER LA DATE POUR DAY - MOIS - ANNEE-->
                     <?php if(isset($post->edit_date)) :?>
                         <?= $post->edit_date ?>
                     <?php else : ?>
@@ -36,9 +37,17 @@
             
             <div>
                 <?php if(!empty($comments)) : ?>
-                    <div>
-                        la liste des commentaire ici            
-                    </div>
+                    <h2 class="border-bottom">Commentaire</h2>
+                    <?php foreach ($comments as $comment) : ?>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h3 class="card-title"><?= $comment->title ?></h3>
+                                <h6 class="card-subtitle mb-2 fst-italic fw-lighter text-muted">le <?= $comment->creat_date ?>, par <?= ucfirst($comment->lastname) ?> <?= ucfirst($comment->firstname) ?></h6>
+
+                                <p class="card-text"><?= $comment->comment ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
                 <?php else : ?>
                     <div>
                         Aucun commentaire ajouté
@@ -58,14 +67,15 @@
                     </div>
                     <div class="modal-body">
                         <form action="?page=post&action=addComment" method="POST">
+                            <input type="number" name="post_id" value="<?= $post->id ?>" hidden>
                             <div class="mb-3">
                                 <label for="title">Un titre</label>
-                                <input type="text" class="form-control" name="title" id="title" required>
+                                <input type="text" class="form-control" name="title" id="title"  required>
                             </div>
 
-                            <label for="content">Le commentaire</label>
+                            <label for="comment">Le commentaire</label>
                             <div class="input-group mb-3">
-                                <textarea class="w-100" name="content" id="content"required></textarea>
+                                <textarea class="w-100" name="comment" id="comment"required></textarea>
                             </div>
 
                             <div>
@@ -93,22 +103,22 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="?page=post&action=addComment" method="POST">
+                        <form action="?page=post&action=editPost" method="POST">
                             <input type="text" name="post_id" value="<?= $post->id ?>" hidden/>
 
                             <div class="mb-3">
                                 <label for="title">Un titre</label>
-                                <input type="text" class="form-control" name="title" id="title" required>
+                                <input type="text" class="form-control" name="title" id="title" value="<?= $post->title ?>" required>
                             </div>
 
                             <label for="intro">Intro</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="intro" id="intro" required>
+                                <input type="text" class="form-control" name="intro" id="intro" value="<?= $post->intro ?>" required>
                             </div>
 
-                            <label for="content">Content</label>
+                            <label for="content">Contenu du post</label>
                             <div class="input-group mb-3">
-                                <textarea class="w-100" name="content" id="content"required></textarea>
+                                <textarea class="w-100 p-2" name="content" id="content" required><?= $post->content ?></textarea>
                             </div>
 
                             <div>

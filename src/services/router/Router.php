@@ -21,11 +21,21 @@ class Router
                         (new PostController())->actionAdd();
                     } elseif (isset($_GET['action']) && $_GET['action'] == "addComment") {
                         (new CommentsController())->actionAdd();
-                    } 
+                    } elseif (isset($_GET['action']) && $_GET['action'] == "editPost"){
+                        (new PostController())->actionEdit();
+                    }
                     else {
                         (new PostController())->getList();
                     }
                 }
+                break;
+
+            case 'login':
+                if(isset($_GET['action']) && $_GET['action'] == "connect") {
+
+                }
+
+                //if()
                 break;
 
             case 'home':

@@ -59,4 +59,25 @@ class PostController
 
         header('Location: ?page=post');
     }
+
+    public function actionEdit() {
+        if(isset($_POST['title']) && isset($_POST['intro']) && isset($_POST['content']) && isset($_POST['post_id'])) {
+            $title = $_POST['title'];
+            $intro = $_POST['intro'];
+            $content = $_POST['content'];
+            $id = $_POST['post_id'];
+        } else {
+            throw new \Exception("Champ vide dans la modification du post");
+        }
+
+        try {
+            (new PostRepository())->edit($title, $intro, $content, $id);
+        } catch (\Exception $e){
+            showErrorArray($e);
+            throw new \Exception("Erreur survenu lors de la modification du post");
+        }
+
+        header('Location: ?page=post&post='.$id);
+
+    }
 }
