@@ -7,7 +7,10 @@
         </div>
 
         <div class="fs-1 text-white" >
-            <a href="" class="text-decoration-none text-white" data-bs-toggle="modal" data-bs-target="#login">
+            <?php if(isset($_SESSION['user'])) : ?>
+                <div>Bonjour <?= $_SESSION['user']->firstname ?></div>
+            <?php endif ?>
+            <a href="" class="text-decoration-none text-white" data-bs-toggle="modal" data-bs-target="#loginModal">
                 <i class="bi bi-person-fill"></i>
             </a>
 
@@ -16,7 +19,10 @@
     </div>
 </nav>
 
-<section>
+<?php include '../src/views/modals/loginModal.php' ?>
+<?php include '../src/views/modals/registerModal.php' ?>
+
+<!-- <section>
     <div class="modal" id="login" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -61,13 +67,13 @@
 
                     <div>
                         <div class="mb-3">
-                            <label for="emailConnect">Nom</label>
-                            <input type="email" class="form-control" name="email" id="emailConnect" value="" required>
+                            <label for="lastname">Nom</label>
+                            <input type="text" class="form-control" name="lastname" id="lastname" value="" required>
                         </div>
     
                         <div class="mb-3">
-                            <label for="emailConnect">Prénom</label>
-                            <input type="email" class="form-control" name="email" id="emailConnect" value="" required>
+                            <label for="firstname">Prénom</label>
+                            <input type="text" class="form-control" name="firstname" id="firstname" value="" required>
                         </div>
                     </div>
 
@@ -94,4 +100,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

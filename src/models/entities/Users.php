@@ -17,9 +17,15 @@ class Users
         return ucfirst($this->lastname) .' '. ucfirst($this->firstname);
     }
 
-    public function checkPassWord($password) {
-        
-
-        return $this->password === $password;
+    /**
+     * Check if valide password
+     * 
+     * @param {String}  $password       the passeword to check
+     * 
+     * @return {Boolean}    -true if the passeword it's good
+     *                      -false if the password is wrong
+     */
+    public function checkPassword($password) {
+        return password_verify($password, $this->password);
     }
 }

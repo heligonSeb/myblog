@@ -2,6 +2,7 @@
 
 namespace App\services\router;
 
+use App\controllers\AuthController;
 use App\controllers\HomeController;
 use App\controllers\ErrorController;
 use App\controllers\PostController;
@@ -32,10 +33,10 @@ class Router
 
             case 'login':
                 if(isset($_GET['action']) && $_GET['action'] == "connect") {
-
+                    (new AuthController())->connect();
+                } else {
+                    (new AuthController())->addUser();
                 }
-
-                //if()
                 break;
 
             case 'home':
