@@ -4,6 +4,7 @@
 namespace App\controllers;
 
 use App\models\repositories\UsersRepository;
+use App\controllers\ErrorController;
 
 class AuthController {
     /**
@@ -11,23 +12,21 @@ class AuthController {
      */
     public function connect() {
         if(!isset($_POST['email']) && !isset($_POST['password'])) {
-            $this->ErrorMessageModal('Veuillez remplir les champs du formulaire');
-
-            
+            (new ErrorController())->ErrorMessage('Veuillez remplir les champs du formulaire');
         }
 
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->ErrorMessageModal('Format de mail invalide');
+            (new ErrorController())->ErrorMessage('Format de mail invalide');
         }
 
         try {
             $user = (new UsersRepository())->getUserByEmail($_POST['email']);
         } catch (\Exception $e) {
-            $this->ErrorMessageModal('Votre Email ou mot de passe incorrect ');
+            (new ErrorController())->ErrorMessage('Votre Email ou mot de passe incorrect ');
         }
 
         if(!$user->checkPassword($_POST['password'])) {
-            $this->ErrorMessageModal('Email ou mot de passe incorrect');
+            (new ErrorController())->ErrorMessage('Votre email ou mot de passe incorrect');
         }
 
         $_SESSION['user'] = $user;
@@ -37,11 +36,11 @@ class AuthController {
 
     public function addUser() {
         if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
-            throw new \Exception('Veuillez remplir les champs du formulaire');
+            (new ErrorController())->ErrorMessage('Veuillez remplir les champs du formulaire');
         }
 
         if(!(new UsersRepository())->userExist($_POST['email'])) {
-            throw new \Exception('Utilisateur déja existant');
+            (new ErrorController())->ErrorMessage('Utilisateur déja existant');
         }
 
         try {
@@ -57,16 +56,4 @@ class AuthController {
 
         $this->connect();
     }
-
-    /**
-     * dzada
-     * @param {String}
-     */
-    private function ErrorMessageModal($message) {
-        $_SESSION['errorMessage'] = $message;
-
-        header('Location: /public');
-    }
-
-
 }

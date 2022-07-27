@@ -27,11 +27,23 @@ class CommentsRepository
         return $result;
     }
 
-    public function add($title, $comment, $post_id, $user_id) {
-        /**Si admin add comment validate 1 */
-        $query = 'INSERT INTO '.$this->table.'(title, comment, validate, creat_date, user_id, post_id) VALUES (:title, :comment, 0, NOW(), :user_id, :post_id) ';
+    public function add($title, $comment, $post_id, $user) {
+        $validate = 0;
+        
+        if($user->status == 'admin') {
+            $validate = 1;
+        }
+
+        $query = 'INSERT INTO '.$this->table.'(title, comment, validate, creat_date, user_id, post_id) VALUES (:title, :comment, :validate, NOW(), :user_id, :post_id) ';
 
         $q = $this->db->prepare($query);
-        $q->execute(['title' => $title, 'comment' => $comment, 'user_id' => $user_id, 'post_id' => $post_id]);
+        $q->execute(['title' => $title, 'comment' => $comment,'validate' => $validate, 'user_id' => $user->id, 'post_id' => $post_id]);
+    }
+
+    public function validate($id) {
+        $query = 'UPDATE '.$this->table.' SET validate=1 WHERE id=:id';
+
+        $q = $this->db->prepare($query);
+        $q->execute(['id' => $id]);
     }
 }

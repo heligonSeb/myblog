@@ -1,12 +1,17 @@
 <section>
     <div class="modal show" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form action="?page=login&action=connect" method="POST">
                     <button type="button" class="btn" data-bs-dismiss="modal">
                         <i class="bi bi-x"></i>
                     </button>
 
+                    <?php if(isset($_SESSION['errorMessage'])) :?>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <?= $_SESSION['errorMessage'] ?>
+                        </div>
+                    <?php endif ?>
 
                     <div class="mb-3">
                         <label for="emailConnect">Email</label>

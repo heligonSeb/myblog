@@ -1,11 +1,17 @@
 <section>
     <div class="modal" id="addUser" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form action="?page=login&action=addUser" method="POST">
                     <button type="button" class="btn" data-bs-dismiss="modal">
                         <i class="bi bi-x"></i>
                     </button>
+
+                    <?php if(isset($_SESSION['errorMessage'])) :?>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <?= $_SESSION['errorMessage'] ?>
+                        </div>
+                    <?php endif ?>
 
                     <div>
                         <div class="mb-3">
@@ -43,3 +49,14 @@
         </div>
     </div>
 </section>
+
+<?php if(isset($_SESSION['errorMessage'])): ?>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        let modal = new bootstrap.Modal('#addUser');
+        modal.show();
+
+    });
+</script>
+<?php endif ?>

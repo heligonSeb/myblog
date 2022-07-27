@@ -16,7 +16,11 @@ class Router
         switch ($page) {
             case 'post':
                 if(isset($_GET['post'])) {
-                    (new PostController())->getPost($_GET['post']);
+                    if(isset($_GET['action']) && $_GET['action'] == "validatecomment") {
+                        (new CommentsController())->validateComment();
+                    } else {
+                        (new PostController())->getPost($_GET['post']);
+                    }
                 } else {
                     if(isset($_GET['action']) && $_GET['action'] == "add") {
                         (new PostController())->actionAdd();

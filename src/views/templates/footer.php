@@ -1,8 +1,13 @@
 <footer class="bg-dark text-white">
     <div>
         <ul>
-            <li>Home</li>
-            <li>Post</li>
+            <li>
+                <a href="/public">Home</a>
+            </li>
+
+            <li>
+                <a href="?page=post">Post</a>
+            </li>
         </ul>
     </div>
 
