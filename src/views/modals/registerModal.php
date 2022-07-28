@@ -54,8 +54,8 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
-        let modal = new bootstrap.Modal('#addUser');
-        modal.show();
+        let modalRegister = new bootstrap.Modal('#addUser');
+        modalmodalRegister.show();
 
     });
 </script>

@@ -6,16 +6,14 @@ namespace App\controllers;
 class ErrorController
 {
     public function notFound() {
-        echo '404';
+        include '../src/views/error/notFound.php';
     }
 
-    /**
-     * Return an Error message with session
-     * @param {String}
-     */
-    public function ErrorMessage($message) {
-        $_SESSION['errorMessage'] = $message;
+    public function system() {
+        include '../src/views/error/system.php';
+    }
 
-        header('Location: /public');
+    public function unknown() {
+        include '../src/views/error/unknown.php';
     }
 }

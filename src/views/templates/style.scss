@@ -6,4 +6,24 @@
 .form-custom-box {
     position: relative;
 }
+.error {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 700px;
+    height: 500px;
+}
+.errorNotFound {
+    background-image: url('./media/404.jpg');
+}
 
+.errorUnknown {
+    background-image: url('./media/unknown.jpg');
+}
+
+.errorSystem {
+    background-image: url('./media/unknown.jpg');
+}
+
+.errorHack {
+    background-image: url('./media/hackemote.jpg');
+}

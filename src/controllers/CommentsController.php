@@ -3,7 +3,9 @@
 
 namespace App\controllers;
 
+use App\exceptions\SystemException;
 use App\models\repositories\CommentsRepository;
+
 
 
 class CommentsController {
@@ -15,29 +17,23 @@ class CommentsController {
             $title = $_POST['title'];
             $comment = $_POST['comment'];
         } else {
-            throw new \Exception("Error lors du remplissage du formulaire");
-            
+            throw new SystemException();      
         }
 
-        try {
-            (new CommentsRepository())->add($title, $comment, $post_id, $user);
-        } catch (\Exception $e) {
-            throw new \Exception("Error lors de l'ajout du commentaire");
-        }
+
+        (new CommentsRepository())->add($title, $comment, $post_id, $user);
+
 
         header('Location: ?page=post&post='.$post_id);
     }
 
     public function validateComment() {
         if(!isset($_POST['commentId'])) {
-           throw new \Exception("Erreur lors du remplissage du formulaire", 1);
+            throw new SystemException(); /** TRICHE ERROR */
         }
 
-        try {
-            (new CommentsRepository())->validate($_POST['commentId']);
-        } catch (\Exception $e) {
-            throw new \Exception("Erreur dans la validation du commentaire", 1);
-        }
+        (new CommentsRepository())->validate($_POST['commentId']);
+
 
         header('Location: ?page=post&post='.$_GET['post']);
     }

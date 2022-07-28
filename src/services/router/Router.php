@@ -7,6 +7,8 @@ use App\controllers\HomeController;
 use App\controllers\ErrorController;
 use App\controllers\PostController;
 use App\controllers\CommentsController;
+use App\controllers\ContactController;
+use App\controllers\EmailController;
 
 class Router
 {
@@ -38,13 +40,19 @@ class Router
             case 'login':
                 if(isset($_GET['action']) && $_GET['action'] == "connect") {
                     (new AuthController())->connect();
-                } else {
+                } elseif(isset($_GET['action']) && $_GET['action'] == "addUser") {
                     (new AuthController())->addUser();
+                } else {
+                    (new AuthController())->logoff();
                 }
                 break;
 
             case 'home':
                 (new HomeController())->getHomePage();
+                break;
+
+            case 'sendmail': 
+                (new ContactController())->send();
                 break;
             
             default:

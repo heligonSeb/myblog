@@ -23,7 +23,7 @@
     <section id="contact">
         <h2 class="text-center">Besoin de moi ?</h2>
 
-        <form action="" method="POST" class="form px-2">
+        <form action="?page=sendmail" method="POST" class="form px-2">
             <div>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="lastname" aria-describedby="nomHelp"/>

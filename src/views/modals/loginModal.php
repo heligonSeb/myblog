@@ -42,8 +42,8 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
-        let modal = new bootstrap.Modal('#loginModal');
-        modal.show();
+        let modalLogin = new bootstrap.Modal('#loginModal');
+        modalLogin.show();
 
     });
 </script>

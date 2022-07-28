@@ -7,36 +7,38 @@ use App\models\entities\Comments;
 use App\models\repositories\CommentsRepository;
 use App\models\repositories\PostRepository;
 use App\models\repositories\UsersRepository;
+use App\exceptions\NotFoundException;
+use App\exceptions\SystemException;
 
 class PostController
 {
     public function getList() {
-        try {
-            $posts = (new PostRepository())->getPostList();
-        } catch (\Exception $e) {
-            throw new \Exception("Erreur lors de la récupération des posts"); 
+        $posts = (new PostRepository())->getPostList();
+
+        if(!$posts) {
+            throw new SystemException();
         }
 
         include '../src/views/postList.php';
     }
 
     public function getPost($id) {
-        try {
-            $post = (new PostRepository())->getPost($id);
+        $post = (new PostRepository())->getPost($id);
 
-            try {
-                $user = (new UsersRepository())->getUser($post->user_id);
-            } catch (\Exception $e) {
-                throw new \Exception('Error lors de la recuperation de la personne');
-            }
+        if(!$post) {
+            throw new NotFoundException();
+        }
 
-            try {
-                $comments = (new CommentsRepository())->getAllComments($post->id);
-            } catch (\Exception $th) {
-                throw new \Exception("Error lors de la recuperation des commentaires");
-            }
-        } catch (\Exception $e) {
-            throw new \Exception("Error lors de la récupération d'un post");
+        $user = (new UsersRepository())->getUser($post->user_id);
+
+        if(!$user) {
+            throw new SystemException();
+        }
+
+        $comments = (new CommentsRepository())->getAllComments($post->id);
+
+        if(!$comments) {
+            throw new SystemException();
         }
 
         include '../src/views/post.php';
