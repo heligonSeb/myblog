@@ -26,10 +26,10 @@ class PostRepository
     public function add($title, $intro, $content) {
         $id = 2;
 
-        $query = 'INSERT INTO '. $this->table . '(title,intro,content,creat_date,edit_date,user_id) VALUES (:title, :intro, :content, NOW(), null, :id)';
+        $query = 'INSERT INTO :table(title,intro,content,creat_date,edit_date,user_id) VALUES (:title, :intro, :content, NOW(), null, :id)';
 
         $q = $this->db->prepare($query);
-        $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
+        $q->execute(['table' => $this->table, 'title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
     }
 
     /**
@@ -41,10 +41,10 @@ class PostRepository
      * @param {Integer} $id         the id of the post to update
      */
     public function edit($title, $intro, $content, $id) {
-        $query = 'UPDATE '. $this->table . ' SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
+        $query = 'UPDATE :table SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
 
         $q = $this->db->prepare($query);
-        $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
+        $q->execute(['table' => $this->table, 'title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
     }
 
     /**
@@ -52,10 +52,10 @@ class PostRepository
      * @return {Array}
      */
     public function getPostList() {
-        $query = 'SELECT * FROM ' . $this->table;
+        $query = 'SELECT * FROM :table';
         
         $q = $this->db->prepare($query);
-        $q->execute();
+        $q->execute(['table' => $this->table]);
         $result = $q->fetchAll(\PDO::FETCH_CLASS, Post::class);
 
         return $result;
@@ -68,10 +68,10 @@ class PostRepository
      * @return {Object}
      */
     public function getPost($id) {
-        $query = 'SELECT * FROM '.$this->table.' WHERE id=:id';
+        $query = 'SELECT * FROM :table WHERE id=:id';
 
         $q = $this->db->prepare($query);
-        $q->execute(['id' => intval($id)]);
+        $q->execute(['table' => $this->table, 'id' => intval($id)]);
         $q->setFetchMode(\PDO::FETCH_CLASS, Post::class);
         
         $result = $q->fetch();

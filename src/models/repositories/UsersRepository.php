@@ -24,10 +24,10 @@ class UsersRepository
      * @return {Object}
      */
     public function getUser($id) {
-        $query = 'SELECT * FROM '.$this->table.' WHERE id=:id';
+        $query = 'SELECT * FROM :table WHERE id=:id';
 
         $q = $this->db->prepare($query);
-        $q->execute(['id' => $id]);
+        $q->execute(['table' => $this->table, 'id' => $id]);
         $q->setFetchMode(\PDO::FETCH_CLASS, Users::class);
 
         $result = $q->fetch();
@@ -43,10 +43,10 @@ class UsersRepository
      * @return {Object}
      */
     public function getUserByEmail($email) {
-        $query = 'SELECT * FROM '.$this->table.' WHERE email=:email';
+        $query = 'SELECT * FROM :table WHERE email=:email';
 
         $q = $this->db->prepare($query);
-        $q->execute(['email' => $email]);
+        $q->execute(['table' => $this->table, 'email' => $email]);
         $q->setFetchMode(\PDO::FETCH_CLASS, Users::class);
 
         $result = $q->fetch();
@@ -63,14 +63,15 @@ class UsersRepository
      * @param {String} $password        password for the user
      */
     public function add($lastname, $firstname, $email, $password) {
-        $query = 'INSERT INTO '.$this->table.' (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
+        $query = 'INSERT INTO :table (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
 
         $q = $this->db->prepare($query);
         $q->execute([
-                'lastname' => $lastname,
-                'firstname' => $firstname,
-                'email' => $email,
-                'password' => $password
+            'table' => $this->table,
+            'lastname' => $lastname,
+            'firstname' => $firstname,
+            'email' => $email,
+            'password' => $password
         ]);
     }
 
