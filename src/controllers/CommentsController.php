@@ -9,6 +9,10 @@ use App\models\repositories\CommentsRepository;
 
 
 class CommentsController {
+    /**
+     * Creat a comment from post
+     * and redirect to the post page
+     */
     public function actionAdd() {
         $user = $_SESSION['user'];
 
@@ -27,9 +31,13 @@ class CommentsController {
         header('Location: ?page=post&post='.$post_id);
     }
 
+    /**
+     * Validate an comment for can be show with the post
+     * and redirect to the post page
+     */
     public function validateComment() {
         if(!isset($_POST['commentId'])) {
-            throw new SystemException(); /** TRICHE ERROR */
+            throw new SystemException();
         }
 
         (new CommentsRepository())->validate($_POST['commentId']);

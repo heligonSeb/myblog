@@ -6,6 +6,9 @@ namespace App\services\database;
 class Database {
     static $db=null;
 
+    /**
+     * Connect to the database
+     */
     public static function connexionDb() {
         if (null !== self::$db) {
             return self::$db;

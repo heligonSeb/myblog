@@ -16,6 +16,13 @@ class PostRepository
         $this->db = Database::connexionDb();
     }
 
+    /**
+     * Insert a new post in database
+     * 
+     * @param {String} $title       the post title
+     * @param {String} $intro       the post intro, short text
+     * @param {String} $content     the post content
+     */
     public function add($title, $intro, $content) {
         $id = 2;
 
@@ -25,6 +32,14 @@ class PostRepository
         $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
     }
 
+    /**
+     * Update a post in database
+     * 
+     * @param {String} $title       the post title
+     * @param {String} $intro       the post intro, short text
+     * @param {String} $content     the post content
+     * @param {Integer} $id         the id of the post to update
+     */
     public function edit($title, $intro, $content, $id) {
         $query = 'UPDATE '. $this->table . ' SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
 
@@ -48,7 +63,7 @@ class PostRepository
 
     /**
      * Get one post from database with id as match
-     * @param {String}      l'id du post
+     * @param {Integer}      the id of a post
      * 
      * @return {Object}
      */

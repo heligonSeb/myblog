@@ -13,12 +13,15 @@ class Users
     public $validate;
     public $status;
 
+    /**
+     * Creat a fullName with the lastname and firstname
+     */
     public function fullName() {
         return ucfirst($this->lastname) .' '. ucfirst($this->firstname);
     }
 
     /**
-     * Check if valide password
+     * Check if the password is good
      * 
      * @param {String}  $password       the passeword to check
      * 

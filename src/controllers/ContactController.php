@@ -3,10 +3,16 @@
 
 namespace App\controllers;
 
+use App\exceptions\SystemException;
+
 class ContactController {
+    /**
+     * Send an email to the website admin and redirect to home page
+     * and redirect to home page
+     */
     public function send() {
         if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['subject']) || !isset($_POST['content'])) {
-            throw new \Exception("Un des champs du formulaire est vide", 1);
+            throw new SystemException(); 
         }
 
         $to      = 'heligon.seb@gmail.com';

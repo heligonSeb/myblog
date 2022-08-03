@@ -13,10 +13,10 @@
         <div class="text-center">
             <div>Vous voulez mieux me connaitre, n'hésitez pas à consulter mon CV</div>
 
-            <button type="button" class="btn btn-primary">
+            <a href="../src/views/templates/media/cv_heligon_sebastien.pdf" class="btn btn-primary" download="heligon_sebastien_cv">
                 <i class="bi bi-file-earmark-pdf-fill"></i>
                 Télécharger
-            </button>
+            </a>
         </div>
     </section>
 

@@ -4,11 +4,11 @@
 namespace App\controllers;
 
 use App\models\repositories\UsersRepository;
-use App\controllers\ErrorController;
 
 class AuthController {
     /**
-     * 
+     * Login to the website with an email and password
+     * and redirect to home page
      */
     public function connect() {
         if(!isset($_POST['email']) && !isset($_POST['password'])) {
@@ -35,6 +35,9 @@ class AuthController {
         }
     }
 
+    /**
+     * Add an user in database and then use the methods connect() for login to the website
+     */
     public function addUser() {
         if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             ErrorMessage('Veuillez remplir les champs du formulaire');
@@ -54,6 +57,10 @@ class AuthController {
         $this->connect();
     }
 
+    /**
+     * Logoff to the website
+     * and redirect to home page
+     */
     public function logoff() {
         session_unset();
         session_destroy();

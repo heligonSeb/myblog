@@ -16,6 +16,11 @@ class CommentsRepository
         $this->db = Database::connexionDb();
     }
 
+    /**
+     * Select all comment from database
+     * 
+     * @param {Integer} $postId     the id from a post
+     */
     public function getAllComments($postId) {
         $query = 'SELECT c.id,c.title,c.comment,c.validate,c.creat_date,c.user_id,c.post_id,u.lastname,u.firstname FROM '.$this->table.' c INNER JOIN users u ON c.user_id=u.id WHERE c.post_id=:postId';
 
@@ -27,6 +32,14 @@ class CommentsRepository
         return $result;
     }
 
+    /**
+     * Insert a new comment in database
+     * 
+     * @param {String} $title       the title from comment
+     * @param {String} $comment     the comment content
+     * @param {Integer} $post_id    the id from a post where we add the comment
+     * @param {Object} $user        the user connected
+     */
     public function add($title, $comment, $post_id, $user) {
         $validate = 0;
         
@@ -40,6 +53,11 @@ class CommentsRepository
         $q->execute(['title' => $title, 'comment' => $comment,'validate' => $validate, 'user_id' => $user->id, 'post_id' => $post_id]);
     }
 
+    /**
+     * Update the Validate field to a comment in database
+     * 
+     * @param {Integer} $id     the id of the comment
+     */
     public function validate($id) {
         $query = 'UPDATE '.$this->table.' SET validate=1 WHERE id=:id';
 
