@@ -19,7 +19,7 @@ class UsersRepository
     /**
      * Get all informations of an user from database with an id
      * 
-     * @param {Integer} $id     the id of an user
+     * @param {String} $id     the id of an user
      * 
      * @return {Object}
      */

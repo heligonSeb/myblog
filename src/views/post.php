@@ -83,7 +83,7 @@
     </section>
 
 
-<?php include '../src/views/modals/addComModal.php' ?>
+<?php include '../src/views/modals/addCommentModal.php' ?>
 <?php include '../src/views/modals/editPostModal.php' ?>
 
 

@@ -4,7 +4,7 @@
 namespace App\services\database;
 
 class Database {
-    static $db=null;
+    private static $db=null;
 
     /**
      * Connect to the database

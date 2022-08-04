@@ -5,6 +5,7 @@ namespace App\models\repositories;
 
 use App\services\database\Database;
 use App\models\entities\Comments;
+use App\models\entities\Users;
 
 class CommentsRepository 
 {
@@ -40,7 +41,7 @@ class CommentsRepository
      * @param {Integer} $post_id    the id from a post where we add the comment
      * @param {Object} $user        the user connected
      */
-    public function add($title, $comment, $post_id, $user) {
+    public function add($title, $comment, $post_id, Users $user) {
         $validate = 0;
         
         if($user->status == 'admin') {

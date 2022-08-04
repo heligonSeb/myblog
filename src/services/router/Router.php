@@ -8,7 +8,6 @@ use App\controllers\ErrorController;
 use App\controllers\PostController;
 use App\controllers\CommentsController;
 use App\controllers\ContactController;
-use App\controllers\EmailController;
 
 class Router
 {
