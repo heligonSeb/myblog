@@ -41,10 +41,10 @@ class PostRepository
      * @param {Integer} $id         the id of the post to update
      */
     public function edit($title, $intro, $content, $id) {
-        $query = 'UPDATE :table SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
+        $query = 'UPDATE '. self::TABLE .' SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
 
         $q = $this->db->prepare($query);
-        $q->execute(['table' => $this->table, 'title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
+        $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
     }
 
     /**
@@ -52,11 +52,9 @@ class PostRepository
      * @return {Array}
      */
     public function getPostList() {
-        $query = 'SELECT * FROM :table';
-        $query = 'SELECT * FROM ' . $this->table;
+        $query = 'SELECT * FROM '.self::TABLE;
         
         $q = $this->db->prepare($query);
-        //$q->execute(['table' => $this->table]);
         $q->execute();
         $result = $q->fetchAll(\PDO::FETCH_CLASS, Post::class);
 
@@ -70,10 +68,10 @@ class PostRepository
      * @return {Object}
      */
     public function getPost($id) {
-        $query = 'SELECT * FROM :table WHERE id=:id';
+        $query = 'SELECT * FROM '. self::TABLE .' WHERE id=:id';
 
         $q = $this->db->prepare($query);
-        $q->execute(['table' => $this->table, 'id' => intval($id)]);
+        $q->execute(['id' => intval($id)]);
         $q->setFetchMode(\PDO::FETCH_CLASS, Post::class);
         
         $result = $q->fetch();

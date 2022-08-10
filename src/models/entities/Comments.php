@@ -13,3 +13,4 @@ class Comments
     public $user_id;
     public $post_id;
 }
+

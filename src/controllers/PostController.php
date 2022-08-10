@@ -38,6 +38,7 @@ class PostController
             throw new NotFoundException();
         }
 
+        
         $user = (new UsersRepository())->getUser($post->user_id);
 
         if(!$user) {
@@ -45,10 +46,6 @@ class PostController
         }
 
         $comments = (new CommentsRepository())->getAllComments($post->id);
-
-        if(!$comments) {
-            throw new SystemException();
-        }
 
         include '../src/views/post.php';
     }

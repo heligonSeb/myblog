@@ -9,7 +9,7 @@ use App\models\entities\Users;
 class UsersRepository 
 {
     private $db;
-    private $table="users";
+    const TABLE="users";
 
     public function __construct()
     {
@@ -24,10 +24,10 @@ class UsersRepository
      * @return {Object}
      */
     public function getUser($id) {
-        $query = 'SELECT * FROM :table WHERE id=:id';
+        $query = 'SELECT * FROM '. self::TABLE .' WHERE id=:id';
 
         $q = $this->db->prepare($query);
-        $q->execute(['table' => $this->table, 'id' => $id]);
+        $q->execute(['id' => $id]);
         $q->setFetchMode(\PDO::FETCH_CLASS, Users::class);
 
         $result = $q->fetch();
@@ -43,10 +43,10 @@ class UsersRepository
      * @return {Object}
      */
     public function getUserByEmail($email) {
-        $query = 'SELECT * FROM :table WHERE email=:email';
+        $query = 'SELECT * FROM '. self::TABLE .' WHERE email=:email';
 
         $q = $this->db->prepare($query);
-        $q->execute(['table' => $this->table, 'email' => $email]);
+        $q->execute(['email' => $email]);
         $q->setFetchMode(\PDO::FETCH_CLASS, Users::class);
 
         $result = $q->fetch();
@@ -63,11 +63,10 @@ class UsersRepository
      * @param {String} $password        password for the user
      */
     public function add($lastname, $firstname, $email, $password) {
-        $query = 'INSERT INTO :table (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
+        $query = 'INSERT INTO '. self::TABLE .' (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
 
         $q = $this->db->prepare($query);
         $q->execute([
-            'table' => $this->table,
             'lastname' => $lastname,
             'firstname' => $firstname,
             'email' => $email,

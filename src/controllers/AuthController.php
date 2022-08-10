@@ -12,21 +12,29 @@ class AuthController {
      */
     public function connect() {
         if(!isset($_POST['email']) && !isset($_POST['password'])) {
-            ErrorMessage('Veuillez remplir les champs du formulaire');
+            $this->ErrorMessage('Veuillez remplir les champs du formulaire');
+
+            return;
         }
 
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            ErrorMessage('Format de mail invalide');
+            $this->ErrorMessage('Format de mail invalide');
+
+            return;
         }
 
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
 
         if(!$user) {
-            ErrorMessage('Votre email ou mot de passe incorrect');
+            $this->ErrorMessage('Votre email ou mot de passe incorrect');
+
+            return;
         }
 
         if(!$user->checkPassword($_POST['password'])) {
-            ErrorMessage('Votre email ou mot de passe incorrect');
+            $this->ErrorMessage('Votre email ou mot de passe incorrect');
+
+            return;
         } else {
             unset($_SESSION['errorMessage']);
             $_SESSION['user'] = $user;
@@ -40,11 +48,15 @@ class AuthController {
      */
     public function addUser() {
         if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
-            ErrorMessage('Veuillez remplir les champs du formulaire');
+            $this->ErrorMessage('Veuillez remplir les champs du formulaire');
+
+            return;
         }
 
         if(!(new UsersRepository())->userExist($_POST['email'])) {
-            ErrorMessage('Utilisateur déja existant');
+            $this->ErrorMessage('Utilisateur déja existant');
+
+            return;
         }
 
         (new UsersRepository())->add(
@@ -65,6 +77,16 @@ class AuthController {
         session_unset();
         session_destroy();
 
+        header('Location: /public');
+    }
+    
+    /**
+     * Return an Error message with session
+     * @param {String}
+     */
+    function ErrorMessage($message) {
+        $_SESSION['errorMessage'] = $message;
+        
         header('Location: /public');
     }
 }

@@ -16,7 +16,7 @@
                     <?php if(isset($post->edit_date)) :?>
                         <?= $post->edit_date ?>
                     <?php else : ?>
-                        <?= $post->creat_date?>
+                        <?= $post->creat_date ?>
                     <?php endif ?>
                 </div>
             </div>
