@@ -24,7 +24,7 @@ class UsersRepository
      * @return {Object}
      */
     public function getUser($id) {
-        $query = 'SELECT * FROM '. self::TABLE .' WHERE id=:id';
+        $query = 'SELECT * FROM users WHERE id=:id';
 
         $q = $this->db->prepare($query);
         $q->execute(['id' => $id]);
@@ -43,7 +43,7 @@ class UsersRepository
      * @return {Object}
      */
     public function getUserByEmail($email) {
-        $query = 'SELECT * FROM '. self::TABLE .' WHERE email=:email';
+        $query = 'SELECT * FROM users WHERE email=:email';
 
         $q = $this->db->prepare($query);
         $q->execute(['email' => $email]);
@@ -63,7 +63,7 @@ class UsersRepository
      * @param {String} $password        password for the user
      */
     public function add($lastname, $firstname, $email, $password) {
-        $query = 'INSERT INTO '. self::TABLE .' (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
+        $query = 'INSERT INTO users (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
 
         $q = $this->db->prepare($query);
         $q->execute([

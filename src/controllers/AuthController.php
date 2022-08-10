@@ -12,13 +12,13 @@ class AuthController {
      */
     public function connect() {
         if(!isset($_POST['email']) && !isset($_POST['password'])) {
-            $this->ErrorMessage('Veuillez remplir les champs du formulaire');
+            $this->errorMessage('Veuillez remplir les champs du formulaire');
 
             return;
         }
 
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->ErrorMessage('Format de mail invalide');
+            $this->errorMessage('Format de mail invalide');
 
             return;
         }
@@ -26,13 +26,13 @@ class AuthController {
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
 
         if(!$user) {
-            $this->ErrorMessage('Votre email ou mot de passe incorrect');
+            $this->errorMessage('Votre email ou mot de passe incorrect');
 
             return;
         }
 
         if(!$user->checkPassword($_POST['password'])) {
-            $this->ErrorMessage('Votre email ou mot de passe incorrect');
+            $this->errorMessage('Votre email ou mot de passe incorrect');
 
             return;
         } else {
@@ -48,13 +48,13 @@ class AuthController {
      */
     public function addUser() {
         if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
-            $this->ErrorMessage('Veuillez remplir les champs du formulaire');
+            $this->errorMessage('Veuillez remplir les champs du formulaire');
 
             return;
         }
 
         if(!(new UsersRepository())->userExist($_POST['email'])) {
-            $this->ErrorMessage('Utilisateur déja existant');
+            $this->errorMessage('Utilisateur déja existant');
 
             return;
         }
@@ -82,9 +82,9 @@ class AuthController {
     
     /**
      * Return an Error message with session
-     * @param {String}
+     * @param String    $message        the error message
      */
-    function ErrorMessage($message) {
+    function errorMessage($message) {
         $_SESSION['errorMessage'] = $message;
         
         header('Location: /public');

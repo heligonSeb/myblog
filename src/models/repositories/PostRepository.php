@@ -9,7 +9,6 @@ use App\models\entities\Post;
 class PostRepository 
 {
     private $db;
-    const TABLE="post";
 
     public function __construct()
     {
@@ -26,7 +25,7 @@ class PostRepository
     public function add($title, $intro, $content) {
         $id = 2;
 
-        $query = 'INSERT INTO ' . self::TABLE . '(title,intro,content,creat_date,edit_date,user_id) VALUES (:title, :intro, :content, NOW(), null, :id)';
+        $query = 'INSERT INTO post(title,intro,content,creat_date,edit_date,user_id) VALUES (:title, :intro, :content, NOW(), null, :id)';
 
         $q = $this->db->prepare($query);
         $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
@@ -41,7 +40,7 @@ class PostRepository
      * @param {Integer} $id         the id of the post to update
      */
     public function edit($title, $intro, $content, $id) {
-        $query = 'UPDATE '. self::TABLE .' SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
+        $query = 'UPDATE post SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
 
         $q = $this->db->prepare($query);
         $q->execute(['title'=>$title, 'intro'=>$intro, 'content'=>$content, 'id'=> $id]);
@@ -52,7 +51,7 @@ class PostRepository
      * @return {Array}
      */
     public function getPostList() {
-        $query = 'SELECT * FROM '.self::TABLE;
+        $query = 'SELECT * FROM post';
         
         $q = $this->db->prepare($query);
         $q->execute();
@@ -68,7 +67,7 @@ class PostRepository
      * @return {Object}
      */
     public function getPost($id) {
-        $query = 'SELECT * FROM '. self::TABLE .' WHERE id=:id';
+        $query = 'SELECT * FROM post WHERE id=:id';
 
         $q = $this->db->prepare($query);
         $q->execute(['id' => intval($id)]);
