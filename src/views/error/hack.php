@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <div class="error errorHack">
-    <a href="/public" class="btn btn-outline-secondary mt-4 ms-4">
+    <a href="/" class="btn btn-outline-secondary mt-4 ms-4">
         <i class="bi bi-arrow-left"></i>
         Accueil
     </a>

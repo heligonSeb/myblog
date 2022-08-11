@@ -26,6 +26,6 @@ class ContactController {
     
         mail($to, $subject, $message, $headers);
 
-        header('Location: /public');
+        header('Location: /');
     }
 }

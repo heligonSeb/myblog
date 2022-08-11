@@ -4,7 +4,7 @@
             <h2>Menu</h2>
             <ul class="">
                 <li class="">
-                    <a class="nav-link" href="/public">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
     
                 <li class="">

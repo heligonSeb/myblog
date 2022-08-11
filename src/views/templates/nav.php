@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expend-lg bg-secondary">
     <div class="container-fluid">
         <div>
-            <a href="/public">
+            <a href="/">
                 <img class="w-25" src="media/logo-logo.png" alt="mon logo" />
             </a>
         </div>

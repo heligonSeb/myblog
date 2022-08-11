@@ -39,7 +39,7 @@ class AuthController {
             unset($_SESSION['errorMessage']);
             $_SESSION['user'] = $user;
 
-            header('Location: /public');
+            header('Location: /');
         }
     }
 
@@ -77,16 +77,16 @@ class AuthController {
         session_unset();
         session_destroy();
 
-        header('Location: /public');
+        header('Location: /');
     }
     
     /**
      * Return an Error message with session
      * @param String    $message        the error message
      */
-    function errorMessage($message) {
+    public function errorMessage($message) {
         $_SESSION['errorMessage'] = $message;
         
-        header('Location: /public');
+        header('Location: /');
     }
 }
