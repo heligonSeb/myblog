@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div>
             <a href="/public">
-                <img class="w-25" src="src/views/templates/media/logo-logo.png" alt="mon logo" />
+                <img class="w-25" src="media/logo-logo.png" alt="mon logo" />
             </a>
         </div>
 
