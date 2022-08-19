@@ -1,30 +1,36 @@
 <?php ob_start(); ?>
-    <section class="row">
+    <section class="">
         <?php foreach ($posts as $post) : ?>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h2><?= $post->title ?></h2>
-                        <div><?= $post->creat_date ?></div>
+            <div class="card m-2">
+                <div class="card-header">
+                    <div>
+                        <h2 class="card-title fs-1"><?= $post->title ?></h2>
+                        <div class="card-subtitle mb-2 fw-lighter"><?= $post->creat_date ?></div>
                     </div>
+                </div>
 
-                    <div><?= $post->intro ?></div>
+                <div class="card-body">
+                    <div class="card-text"><?= $post->intro ?></div>
 
-                    <a href="?page=post&post=<?= $post->id ?>" class="btn btn-primary">
+                
+                    <a href="?page=post&post=<?= $post->id ?>" class="btn btn-primary mt-3 col-12">
                         <i class="bi bi-eye"></i>
                         voir
                         <i class="bi bi-plus"></i> 
                     </a>
+
                 </div>
             </div> 
         <?php endforeach ?>
-
-        <div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPost">
-                <i class="bi bi-plus-circle"></i>
-                Ajouter
-            </button>
-        </div>
+        
+        <?php if(isset($_SESSION['user']) && $_SESSION['user']->status == 'admin') : ?>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary my-2 w-75" data-bs-toggle="modal" data-bs-target="#addPost">
+                    <i class="bi bi-plus-circle"></i>
+                    Ajouter un post
+                </button>
+            </div>
+        <?php endif ?>
     </section>
 
     <section>

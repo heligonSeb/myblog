@@ -4,6 +4,7 @@ use App\services\router\Router;
 use App\controllers\ErrorController;
 use App\exceptions\NotFoundException;
 use App\exceptions\SystemException;
+use App\exceptions\ForbiddenException;
 
 session_start();
 
@@ -21,8 +22,10 @@ catch (NotFoundException $e) {
 catch (SystemException $e) {
     (new ErrorController())->system();
 }
+catch (ForbiddenException $e) {
+    (new ErrorController())->forbidden();
+}
 catch (\Exception $e) {
     (new ErrorController())->unknown();
 }
-
 

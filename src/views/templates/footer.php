@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-6">
             <h2>Menu</h2>
-            <ul class="">
-                <li class="">
+            <ul class="border-end border-light nav-footer p-0">
+                <li class="w-50 m-auto d-flex justify-content-center align-items-center">
                     <a class="nav-link" href="/">Home</a>
                 </li>
     
@@ -15,11 +15,11 @@
     
         <div class="col-6">
             <h2>Réseau sociaux</h2>
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin fs-2"></i>
         </div>
     </div>
 
-    <div class="col-12 ">
-        Fait avec amour <i class="bi bi-heart-fill"></i> par Sébastien Héligon
+    <div class="col-12 py-4">
+        Fait avec <i class="bi bi-heart-fill"></i> par Sébastien Héligon
     </div>
 </footer>

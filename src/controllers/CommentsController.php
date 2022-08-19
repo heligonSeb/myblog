@@ -4,6 +4,7 @@
 namespace App\controllers;
 
 use App\exceptions\SystemException;
+use App\exceptions\ForbiddenException;
 use App\models\repositories\CommentsRepository;
 
 
@@ -36,8 +37,12 @@ class CommentsController {
      * and redirect to the post page
      */
     public function validateComment() {
-        if(!isset($_POST['commentId'])) {
-            throw new SystemException();
+        // if(!isset($_POST['commentId'])) {
+        //     throw new SystemException();
+        // }
+
+        if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
+            throw new ForbiddenException();
         }
 
         (new CommentsRepository())->validate($_POST['commentId']);

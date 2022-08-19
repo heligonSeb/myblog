@@ -85,8 +85,6 @@ class AuthController {
      * @param String    $message        the error message
      */
     public function errorMessage($message) {
-        $_SESSION['errorMessage'] = $message;
-        
-        header('Location: /');
+        header('Location: /login?error='.urlencode($message));
     }
 }

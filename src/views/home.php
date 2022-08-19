@@ -27,28 +27,28 @@
         <form action="?page=sendmail" method="POST" class="form px-2">
             <div>
                 <div class="mb-3 position-relative">
-                    <input type="text" class="form-control form-custom-input" id="lastname" name="lastname" aria-describedby="nomHelp" placeholder=" "/>
+                    <input type="text" class="form-control form-custom-input" id="lastname" name="lastname" placeholder=" "/>
                     <label for="lastname" class="form-label form-custom-label position-absolute">Nom</label>
                 </div>
 
                 <div class="mb-3 position-relative">
-                    <input type="text" class="form-control form-custom-input" id="firstname" name="firstname" aria-describedby="prenomHelp" placeholder=" "/>
+                    <input type="text" class="form-control form-custom-input" id="firstname" name="firstname" placeholder=" "/>
                     <label for="firstname" class="form-label form-custom-label position-absolute">Prénom</label>
                 </div>
 
                 <div class="mb-3 position-relative">
-                    <input type="email" class="form-control form-custom-input" id="email" name="email" aria-describedby="prenomHelp" placeholder=" "/>
+                    <input type="email" class="form-control form-custom-input" id="email" name="email" placeholder=" "/>
                     <label for="email" class="form-label form-custom-label position-absolute">Email</label>
                 </div>
             </div>
 
             <div class="mb-3 position-relative">
-                <input type="text" class="form-control form-custom-input" id="subject" name="subject" aria-describedby="prenomHelp" placeholder=" "/>
+                <input type="text" class="form-control form-custom-input" id="subject" name="subject" placeholder=" "/>
                     <label for="subject" class="form-label form-custom-label position-absolute">Objet</label>
                 </div>
 
                 <div class="mb-3 position-relative">
-                    <textarea class="form-control form-custom-input" id="content" name="content" aria-describedby="prenomHelp" placeholder=" "></textarea>
+                    <textarea class="form-control form-custom-input" id="content" name="content" placeholder=" "></textarea>
                     <label for="content" class="form-label form-custom-label position-absolute">Votre message</label>
                 </div>
             </div> 

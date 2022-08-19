@@ -1,35 +1,40 @@
 <?php ob_start(); ?>
 <section>
-        <div>
-            <div>
+        <!-- POST -->
+        <div class="card">
+            <div class="card-body">
                 <div>
-                    <h1><?= $post->title ?></h1>
-                    
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editPost">
-                        edit
-                    </button>
+                    <div>
+                        <h1 class="card-title"><?= $post->title ?></h1>
+                        
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editPost">
+                            edit
+                        </button>
+                    </div>
+            
+                    <div>
+                        Ecrie par <?= $user->fullName() ?> le 
+                        <!-- FORMATER LA DATE POUR DAY - MOIS - ANNEE-->
+                        <?php if(isset($post->edit_date)) :?>
+                            <?= $post->edit_date ?>
+                        <?php else : ?>
+                            <?= $post->creat_date ?>
+                        <?php endif ?>
+                    </div>
                 </div>
         
                 <div>
-                    Ecrie par <?= $user->fullName() ?> le 
-                    <!-- FORMATER LA DATE POUR DAY - MOIS - ANNEE-->
-                    <?php if(isset($post->edit_date)) :?>
-                        <?= $post->edit_date ?>
-                    <?php else : ?>
-                        <?= $post->creat_date ?>
-                    <?php endif ?>
+                    <?= $post->intro ?>
+                </div>
+        
+                <div>
+                    <?= $post->content ?>
                 </div>
             </div>
-    
-            <div>
-                <?= $post->intro ?>
-            </div>
-    
-            <div>
-                <?= $post->content ?>
-            </div>
         </div>
-    
+        
+
+        <!-- COMMENTAIRE -->
         <div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCom">
                 Ajouter un Commentaire
@@ -60,7 +65,7 @@
                                             <div class="d-flex justify-content-between align-items-center mb-2">
                                                 <h3 class="card-title"><?= $comment->title ?></h3>
 
-                                                <button class="btn btn-success">
+                                                <button type="submit" class="btn btn-success">
                                                     <i class="bi bi-check2-square"></i>
                                                 </button>
                                             </div>

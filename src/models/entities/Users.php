@@ -10,7 +10,6 @@ class Users
     public $firstname;
     public $email;
     private $password;
-    public $validate;
     public $status;
 
     /**

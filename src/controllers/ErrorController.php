@@ -25,4 +25,11 @@ class ErrorController
     public function unknown() {
         include '../src/views/error/unknown.php';
     }
+
+    /**
+     * Show the error page forbidden
+     */
+    public function forbidden() {
+        include '../src/views/error/forbidden.php';
+    }
 }

@@ -1,61 +1,139 @@
 /****
-    HOME / Intro PART
+	FOOTER PART
 ****/
-.center-img {
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    text-shadow: 2px 2px 4px black;
+.nav-footer {
+	list-style: none;
+	color: white;
+}
+
+.nav-link:visited {
+	color:white;
+}
+
+.bi-heart-fill {
+	color: red;
+}
+
+/****
+	NAV PART
+****/
+.ico-btn{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	transition: all .20s ease-in;
+	border-radius: 50%;
+}
+
+
+.ico-btn__burger,
+.ico-btn__burger::before,
+.ico-btn__burger::after{
+	width: 20px;
+	height: 2px;
+	background: #fff;
+	border-radius: 2px;
+	transition: all .25s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.ico-btn__burger::before{
+	content: '';
+	position: absolute;
+	transform: translateY(-6px);
+}
+
+.ico-btn__burger::after{
+	content: '';
+	position: absolute;
+	transform: translateY(6px);
+}
+
+/* -------------------------------------------
+**  ANIMATION 
+============================================= */
+.ico-btn.is-active .ico-btn__burger{
+	background: transparent;
+}
+
+.ico-btn.is-active .ico-btn__burger::before{
+	transform: rotate(-45deg);
+}
+
+.ico-btn.is-active .ico-btn__burger::after{
+	transform: rotate(45deg);
+}
+
+.ico-btn.is-active{
+	transform: rotate(360deg);
 }
 
 
 /****
-    HOME / CONTACT FORM PART
+	FORM PART
 ****/
 .form-custom-label {
-    top: 0.5rem;
-    left: 0.5rem;
-    padding: 0 10px;
-    color: #4c8ca0;
-    transition: top 200ms ease-in, font-size 200ms ease-in, background-color 200ms ease-in;
+	top: 0.5rem;
+	left: 0.5rem;
+	padding: 0 10px;
+	color: #4c8ca0;
+	transition: top 200ms ease-in, font-size 200ms ease-in, background-color 200ms ease-in;
 }
 
 .form-custom-input {
-    border: 2px solid #4c8ca0!important;
-    padding: 5px 0px;
-    background-color: transparent;
-    
+	border: 2px solid #4c8ca0!important;
+	padding: 5px 0px;
+	background-color: transparent;
+	
 }
 
 .form-custom-input:focus ~ .form-custom-label,
 .form-custom-input:not(:placeholder-shown).form-custom-input:not(:focus) ~ .form-custom-label {
-    top: -0.75rem;
-    border-radius: 0.5rem;
-    background-color: white;
-    font-size: 0.8rem;
+	top: -0.75rem;
+	border-radius: 0.5rem;
+	background-color: white;
+	font-size: 0.8rem;
 }
 
 
+/****
+	HOME / Intro PART
+****/
+.center-img {
+		top: 50%;
+		left:50%;
+		transform: translate(-50%, -50%);
+		text-shadow: 2px 2px 4px black;
+}
 
-
+/****
+	ERROR PART
+****/
 .error {
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 700px;
-    height: 500px;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 700px;
+		height: 500px;
 }
 .errorNotFound {
-    background-image: url('./media/404.jpg');
+		background-image: url('./media/404.jpg');
 }
 
 .errorUnknown {
-    background-image: url('./media/unknown.jpg');
+		background-image: url('./media/unknown.jpg');
 }
 
 .errorSystem {
-    background-image: url('./media/unknown.jpg');
+		background-image: url('./media/unknown.jpg');
 }
 
 .errorHack {
-    background-image: url('./media/hackemote.jpg');
+		background-image: url('./media/hackemote.jpg');
+}
+
+.errorForbidden {
+		background-image: url('./media/hackemote.png');
 }
