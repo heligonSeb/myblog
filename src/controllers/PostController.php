@@ -3,6 +3,7 @@
 
 namespace App\controllers;
 
+use App\exceptions\ForbiddenException;
 use App\models\repositories\CommentsRepository;
 use App\models\repositories\PostRepository;
 use App\models\repositories\UsersRepository;
@@ -51,10 +52,25 @@ class PostController
     }
 
     /**
+     * show the adding form page
+     */
+    public function getAddPostPage() {
+        if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
+            throw new ForbiddenException();
+        }
+
+        include '../src/views/addPost.php';
+    }
+
+    /**
      * Creat new post
      * and redirect to the page of all post
      */
     public function actionAdd() {
+        if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
+            throw new ForbiddenException();
+        }
+        
         if(isset($_POST['title']) && isset($_POST['intro']) && isset($_POST['content'])) {
             $title = $_POST['title'];
             $intro = $_POST['intro'];
@@ -73,6 +89,10 @@ class PostController
      * and redirect the page of a post
      */
     public function actionEdit() {
+        if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
+            throw new ForbiddenException();
+        }
+        
         if(isset($_POST['title']) && isset($_POST['intro']) && isset($_POST['content']) && isset($_POST['post_id'])) {
             $title = $_POST['title'];
             $intro = $_POST['intro'];
@@ -85,5 +105,23 @@ class PostController
         (new PostRepository())->edit($title, $intro, $content, $id);
 
         header('Location: ?page=post&post='.$id);
+    }
+
+    /**
+     * Show the edit post page
+     */
+    public function getEditPostPage($id) {
+        if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
+            throw new ForbiddenException();
+        }
+
+        $post = (new PostRepository())->getPost($id);
+
+        if(!$post) {
+            throw new NotFoundException();
+        }
+
+
+        include '../src/views/editPost.php';
     }
 }

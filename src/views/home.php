@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
     <section id="intro" class="position-relative bg-filtre">
         <img class="w-100" src="media/bg-intro.png" alt="Illustration image de fond intro"/>
-        <div class="text-center text-white position-absolute center-img w-100">
-            <h1>Héligon Sébastien</h1>
+        <div class="text-center text-white position-absolute center-img col-12">
+            <h1 class="display-2">Héligon Sébastien</h1>
     
             <div>Le développeur qui vous comprend!</div>
         </div>
@@ -27,31 +27,30 @@
         <form action="?page=sendmail" method="POST" class="form px-2">
             <div>
                 <div class="mb-3 position-relative">
-                    <input type="text" class="form-control form-custom-input" id="lastname" name="lastname" placeholder=" "/>
+                    <input type="text" class="form-control form-custom-input" id="lastname" name="lastname" placeholder=" " required/>
                     <label for="lastname" class="form-label form-custom-label position-absolute">Nom</label>
                 </div>
 
                 <div class="mb-3 position-relative">
-                    <input type="text" class="form-control form-custom-input" id="firstname" name="firstname" placeholder=" "/>
+                    <input type="text" class="form-control form-custom-input" id="firstname" name="firstname" placeholder=" " required/>
                     <label for="firstname" class="form-label form-custom-label position-absolute">Prénom</label>
                 </div>
 
                 <div class="mb-3 position-relative">
-                    <input type="email" class="form-control form-custom-input" id="email" name="email" placeholder=" "/>
+                    <input type="email" class="form-control form-custom-input" id="email" name="email" placeholder=" " required/>
                     <label for="email" class="form-label form-custom-label position-absolute">Email</label>
                 </div>
             </div>
 
             <div class="mb-3 position-relative">
-                <input type="text" class="form-control form-custom-input" id="subject" name="subject" placeholder=" "/>
-                    <label for="subject" class="form-label form-custom-label position-absolute">Objet</label>
-                </div>
+                <input type="text" class="form-control form-custom-input" id="subject" name="subject" placeholder=" " required/>
+                <label for="subject" class="form-label form-custom-label position-absolute">Objet</label>
+            </div>
 
-                <div class="mb-3 position-relative">
-                    <textarea class="form-control form-custom-input" id="content" name="content" placeholder=" "></textarea>
-                    <label for="content" class="form-label form-custom-label position-absolute">Votre message</label>
-                </div>
-            </div> 
+            <div class="mb-3 position-relative">
+                <textarea class="form-control form-custom-input" id="content" name="content" placeholder=" " required></textarea>
+                <label for="content" class="form-label form-custom-label position-absolute">Votre message</label>
+            </div>
 
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary bg-gradient" >

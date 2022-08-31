@@ -11,36 +11,36 @@ class AuthController {
      * and redirect to home page
      */
     public function connect() {
+        $message = null;
+
         if(!isset($_POST['email']) && !isset($_POST['password'])) {
-            $this->errorMessage('Veuillez remplir les champs du formulaire');
-
-            return;
+            $message = 'Veuillez remplir les champs du formulaire';
+            
+            return include '../src/views/login.php';
         }
-
+        
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->errorMessage('Format de mail invalide');
+            $message = 'Format de mail invalide';
 
-            return;
+            return include '../src/views/login.php';
         }
-
+        
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
-
+        
         if(!$user) {
-            $this->errorMessage('Votre email ou mot de passe incorrect');
+            $message = 'Votre email ou mot de passe incorrect';
 
-            return;
+            return include '../src/views/login.php';
         }
 
         if(!$user->checkPassword($_POST['password'])) {
-            $this->errorMessage('Votre email ou mot de passe incorrect');
+            $message = 'Votre email ou mot de passe incorrect';
 
-            return;
-        } else {
-            unset($_SESSION['errorMessage']);
-            $_SESSION['user'] = $user;
+            return include '../src/views/login.php';
+        } 
 
-            header('Location: /');
-        }
+        $_SESSION['user'] = $user;
+        header('Location: /');
     }
 
     /**
@@ -86,5 +86,19 @@ class AuthController {
      */
     public function errorMessage($message) {
         header('Location: /login?error='.urlencode($message));
+    }
+
+    /**
+     * Show the login page
+     */
+    public function getLoginPage() {
+        include '../src/views/login.php';
+    }
+
+    /**
+     * Show the login page
+     */
+    public function getRegisterPage() {
+        include '../src/views/register.php';
     }
 }

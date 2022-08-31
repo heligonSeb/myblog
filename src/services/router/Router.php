@@ -19,17 +19,21 @@ class Router
                 if(isset($_GET['post'])) {
                     if(isset($_GET['action']) && $_GET['action'] == "validatecomment") {
                         (new CommentsController())->validateComment();
+                    } elseif (isset($_GET['action']) && $_GET['action'] == "editpostform") {
+                        (new PostController())->getEditPostPage($_GET['post']);
                     } else {
                         (new PostController())->getPost($_GET['post']);
                     }
                 } else {
                     if(isset($_GET['action']) && $_GET['action'] == "add") {
                         (new PostController())->actionAdd();
+                    } elseif (isset($_GET['action']) && $_GET['action'] == "addpostform") {
+                        (new PostController())->getAddPostPage();
                     } elseif (isset($_GET['action']) && $_GET['action'] == "addComment") {
                         (new CommentsController())->actionAdd();
-                    } elseif (isset($_GET['action']) && $_GET['action'] == "editPost"){
+                    } elseif (isset($_GET['action']) && $_GET['action'] == "editPost") {
                         (new PostController())->actionEdit();
-                    }
+                    } 
                     else {
                         (new PostController())->getList();
                     }
@@ -41,9 +45,15 @@ class Router
                     (new AuthController())->connect();
                 } elseif(isset($_GET['action']) && $_GET['action'] == "addUser") {
                     (new AuthController())->addUser();
-                } else {
+                } elseif(isset($_GET['action']) && $_GET['action'] == "logoff") {
                     (new AuthController())->logoff();
+                } else {
+                    (new AuthController())->getLoginPage();
                 }
+                break;
+
+            case 'register':
+                    (new AuthController())->getRegisterPage();
                 break;
 
             case 'home':

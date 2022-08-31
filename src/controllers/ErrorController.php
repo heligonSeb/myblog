@@ -9,27 +9,47 @@ class ErrorController
      * show the error page notFound
      */
     public function notFound() {
-        include '../src/views/error/notFound.php';
+        $error = [
+            'img' => '404.jpg',
+            'alt' => 'page introuvable'
+        ];
+
+        include '../src/views/error/errorPage.php';
     }
 
     /**
      * Show the error page system
      */
     public function system() {
-        include '../src/views/error/system.php';
+        $error = [
+            'img' => 'system.jpg',
+            'alt' => 'erreur système'
+        ];
+
+        include '../src/views/error/errorPage.php';
     }
 
     /**
      * Show the error page unknown
      */
     public function unknown() {
-        include '../src/views/error/unknown.php';
+        $error = [
+            'img' => 'unknown.jpg',
+            'alt' => 'erreur inconnue'
+        ];
+
+        include '../src/views/error/errorPage.php';
     }
 
     /**
      * Show the error page forbidden
      */
     public function forbidden() {
-        include '../src/views/error/forbidden.php';
+        $error = [
+            'img' => '403.jpg',
+            'alt' => 'page non authorisée'
+        ];
+
+        include '../src/views/error/errorPage.php';
     }
 }

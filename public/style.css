@@ -17,6 +17,14 @@
 /****
 	NAV PART
 ****/
+.header-logo {
+	width:50px;
+}
+
+.navbar-toggler:focus {
+	box-shadow: none !important;
+}
+
 .ico-btn{
 	position: relative;
 	display: flex;
@@ -43,13 +51,22 @@
 .ico-btn__burger::before{
 	content: '';
 	position: absolute;
+	right: 7px;
 	transform: translateY(-6px);
 }
 
 .ico-btn__burger::after{
 	content: '';
 	position: absolute;
+	right: 7px;
 	transform: translateY(6px);
+}
+
+@media (min-width: 992px) {
+	.resp-login {
+		position: absolute;
+		right: 20px;
+	}
 }
 
 /* -------------------------------------------
@@ -112,28 +129,7 @@
 /****
 	ERROR PART
 ****/
-.error {
-		background-repeat: no-repeat;
-		background-size: contain;
-		width: 700px;
-		height: 500px;
-}
-.errorNotFound {
-		background-image: url('./media/404.jpg');
-}
-
-.errorUnknown {
-		background-image: url('./media/unknown.jpg');
-}
-
-.errorSystem {
-		background-image: url('./media/unknown.jpg');
-}
-
-.errorHack {
-		background-image: url('./media/hackemote.jpg');
-}
-
-.errorForbidden {
-		background-image: url('./media/hackemote.png');
+.button-position {
+	top:5%;
+	left:5%;
 }

@@ -15,6 +15,10 @@ class CommentsController {
      * and redirect to the post page
      */
     public function actionAdd() {
+        if(!isset($_SESSION['user'])) {
+            throw new ForbiddenException();
+        }
+
         $user = $_SESSION['user'];
 
         if(isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['post_id'])) {

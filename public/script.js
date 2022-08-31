@@ -13,10 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addCommentButton.addEventListener('click', () => {
         cardAddComment.classList.remove('d-none');
+        addCommentButton.classList.add('d-none');
     });
 
     closeCommentButton.addEventListener('click', () => {
         cardAddComment.classList.add('d-none');
+        addCommentButton.classList.remove('d-none');
     });
 });
 
