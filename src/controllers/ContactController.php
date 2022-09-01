@@ -15,7 +15,7 @@ class ContactController {
             throw new SystemException(); 
         }
 
-        $to      = 'heligon.seb@gmail.com';
+        $to      = ADMIN_EMAIL;
         $subject = $_POST['subject'];
         $message = $_POST['content'];
         $headers = array(

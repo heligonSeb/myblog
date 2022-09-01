@@ -20,14 +20,21 @@
                 <label for="content" class="form-label form-custom-label position-absolute">Contenu du post</label>
             </div>
 
-            <div class="row row-cols-md-2 g-2">
-                <button type="submit" class="btn btn-primary col-12 col-md-6">
-                    Ajouter
-                </button>
-
-                <a href="?page=post&post=<?= $post->id ?>" class="btn btn-outline-secondary col-12 col-md-6">
-                    Retour
-                </a>
+            <div class="row g-2">
+                <div class="col-12 col-md-6">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary d-block">
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-grid">
+                        <a href="?page=post&post=<?= $post->id ?>" class="btn btn-outline-secondary">
+                            Retour
+                        </a>
+                    </div>
+                </div>
             </div>
         </form>
     </section>
