@@ -24,7 +24,7 @@ class AuthController {
 
             return include '../src/views/login.php';
         }
-        
+
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
         
         if(!$user) {

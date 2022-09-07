@@ -8,47 +8,75 @@ use App\controllers\ErrorController;
 use App\controllers\PostController;
 use App\controllers\CommentsController;
 use App\controllers\ContactController;
+use App\exceptions\NotFoundException;
 
 class Router
 {
     public function route($page) {
         $page = $page ? $page : 'home';
 
+        if(!isset($_GET['action'])) {
+            $_GET['action'] = '';
+        }
+
         switch ($page) {
             case 'post':
                 if(isset($_GET['post'])) {
-                    if(isset($_GET['action']) && $_GET['action'] == "validatecomment") {
-                        (new CommentsController())->validateComment();
-                    } elseif (isset($_GET['action']) && $_GET['action'] == "editpostform") {
-                        (new PostController())->getEditPostPage($_GET['post']);
-                    } else {
-                        (new PostController())->getPost($_GET['post']);
+                    switch ($_GET['action']) {
+                        case 'validatecomment':
+                            (new CommentsController())->validateComment();
+                            break;
+
+                        case 'editpostform':
+                            (new PostController())->getEditPostPage($_GET['post']);
+                            break;
+                        
+                        default:
+                            (new PostController())->getPost($_GET['post']);
+                            break;
                     }
                 } else {
-                    if(isset($_GET['action']) && $_GET['action'] == "add") {
-                        (new PostController())->actionAdd();
-                    } elseif (isset($_GET['action']) && $_GET['action'] == "addpostform") {
-                        (new PostController())->getAddPostPage();
-                    } elseif (isset($_GET['action']) && $_GET['action'] == "addComment") {
-                        (new CommentsController())->actionAdd();
-                    } elseif (isset($_GET['action']) && $_GET['action'] == "editPost") {
-                        (new PostController())->actionEdit();
-                    } 
-                    else {
-                        (new PostController())->getList();
+                    switch ($_GET['action']) {
+                        case 'add':
+                            (new PostController())->actionAdd();
+                            break;
+
+                        case 'addpostform':
+                            (new PostController())->getAddPostPage();
+                            break;
+
+                        case 'addComment':
+                            (new CommentsController())->actionAdd();
+                            break;
+
+                        case 'editPost':
+                            (new PostController())->actionEdit();
+                            break;
+                        
+                        default:
+                            (new PostController())->getList();
+                            break;
                     }
                 }
                 break;
 
             case 'login':
-                if(isset($_GET['action']) && $_GET['action'] == "connect") {
-                    (new AuthController())->connect();
-                } elseif(isset($_GET['action']) && $_GET['action'] == "addUser") {
-                    (new AuthController())->addUser();
-                } elseif(isset($_GET['action']) && $_GET['action'] == "logoff") {
-                    (new AuthController())->logoff();
-                } else {
-                    (new AuthController())->getLoginPage();
+                switch ($_GET['action']) {
+                    case 'connect':
+                        (new AuthController())->connect();
+                        break;
+
+                    case 'addUser':
+                        (new AuthController())->addUser();
+                        break;
+
+                    case 'logoff':
+                        (new AuthController())->logoff();
+                        break;
+                    
+                    default:
+                        (new AuthController())->getLoginPage();
+                        break;
                 }
                 break;
 
@@ -65,7 +93,7 @@ class Router
                 break;
             
             default:
-                (new ErrorController())->notFound();
+                throw new NotFoundException();
                 break;
         }
     }

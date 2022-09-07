@@ -40,3 +40,4 @@
 <?php $content= ob_get_clean(); ?>
 
 <?php include '../src/views/templates/html.php' ?>
+
