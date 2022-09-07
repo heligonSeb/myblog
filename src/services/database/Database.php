@@ -7,7 +7,7 @@ class Database {
     private static $db=null;
 
     /**
-     * Connect to the database
+     * Connect to the database only if not already connected
      */
     public static function connexionDb() {
         if (null !== self::$db) {

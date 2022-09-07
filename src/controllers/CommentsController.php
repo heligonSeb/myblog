@@ -41,10 +41,6 @@ class CommentsController {
      * and redirect to the post page
      */
     public function validateComment() {
-        // if(!isset($_POST['commentId'])) {
-        //     throw new SystemException();
-        // }
-
         if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
             throw new ForbiddenException();
         }
@@ -55,3 +51,4 @@ class CommentsController {
         header('Location: ?page=post&post='.$_GET['post']);
     }
 }
+

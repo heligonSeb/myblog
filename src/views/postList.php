@@ -7,7 +7,7 @@
                     <div class="card h-100">
                         <div class="card-header">
                             <div>
-                                <h2 class="card-title fs-1"><?= $post->title ?></h2>
+                                <h2 class="card-title fs-3"><?= $post->title ?></h2>
                                 <div class="card-subtitle mb-2 fw-lighter"><?= $post->creat_date ?></div>
                             </div>
                         </div>

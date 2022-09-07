@@ -21,7 +21,7 @@ class UsersRepository
      * 
      * @param {String} $id     the id of an user
      * 
-     * @return {Object}
+     * @return Users
      */
     public function getUser($id) {
         $query = 'SELECT * FROM users WHERE id=:id';
@@ -40,7 +40,7 @@ class UsersRepository
      * 
      * @param {String} $email     the email of an user
      * 
-     * @return {Object}
+     * @return Users
      */
     public function getUserByEmail($email) {
         $query = 'SELECT * FROM users WHERE email=:email';

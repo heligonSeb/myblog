@@ -34,10 +34,10 @@ class PostRepository
     /**
      * Update a post in database
      * 
-     * @param {String} $title       the post title
-     * @param {String} $intro       the post intro, short text
-     * @param {String} $content     the post content
-     * @param {Integer} $id         the id of the post to update
+     * @param String $title       the post title
+     * @param String $intro       the post intro, short text
+     * @param String $content     the post content
+     * @param Integer $id         the id of the post to update
      */
     public function edit($title, $intro, $content, $id) {
         $query = 'UPDATE post SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
@@ -48,7 +48,7 @@ class PostRepository
 
     /**
      * Get all the Post from database
-     * @return {Array}
+     * @return Post[]
      */
     public function getPostList() {
         $query = 'SELECT * FROM post';
@@ -62,9 +62,9 @@ class PostRepository
 
     /**
      * Get one post from database with id as match
-     * @param {Integer}      the id of a post
+     * @param Integer      the id of a post
      * 
-     * @return {Object}
+     * @return Object
      */
     public function getPost($id) {
         $query = 'SELECT * FROM post WHERE id=:id';

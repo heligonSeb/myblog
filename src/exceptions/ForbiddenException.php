@@ -20,3 +20,4 @@ class ForbiddenException extends \Exception implements AppException {
         return 'page non authorisée';
     }
 }
+
