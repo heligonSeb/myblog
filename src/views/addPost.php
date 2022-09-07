@@ -19,13 +19,21 @@
             </div>
 
             <div class="row g-2">
-                <button type="submit" class="btn btn-primary col-12 col-md">
-                    Ajouter
-                </button>
+                <div class="col-12 col-md-6">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary col-12 col-md">
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
 
-                <a href="?page=post" class="btn btn-outline-secondary col-12 col-md">
-                    Retour
-                </a>
+                <div class="col-12 col-md-6">
+                    <div class="d-grid">
+                        <a href="?page=post" class="btn btn-outline-secondary col-12 col-md">
+                            Retour
+                        </a>
+                    </div>
+                </div>
             </div>
         </form>
     </section>

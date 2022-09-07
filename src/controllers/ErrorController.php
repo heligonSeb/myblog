@@ -6,18 +6,6 @@ namespace App\controllers;
 class ErrorController
 {
     /**
-     * show the error page notFound
-     */
-    public function notFound() {
-        $error = [
-            'img' => '404.jpg',
-            'alt' => 'page introuvable'
-        ];
-
-        include '../src/views/error/errorPage.php';
-    }
-
-    /**
      * Show the error page system
      */
     public function system() {
@@ -50,6 +38,10 @@ class ErrorController
             'alt' => 'page non authorisée'
         ];
 
+        include '../src/views/error/errorPage.php';
+    }
+
+    public function showError($error) {
         include '../src/views/error/errorPage.php';
     }
 }

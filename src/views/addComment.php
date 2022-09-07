@@ -16,14 +16,22 @@
                     <label for="comment" class="form-label form-custom-label position-absolute">Le commentaire</label>
                 </div>
 
-                <div>
-                    <button type="submit" class="btn btn-primary col-12 mb-2">
-                        Ajouter
-                    </button>
+                <div class="row g-2">
+                    <div class="col-12 col-md-6">
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary col-12 mb-2">
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
 
-                    <button id="closeCommentButton" type="button" class="btn btn-outline-secondary col-12">
-                        Retour
-                    </button>
+                    <div class="col-12 col-md-6">
+                        <div class="d-grid">
+                            <button id="closeCommentButton" type="button" class="btn btn-outline-secondary col-12">
+                                Retour
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </form>
 

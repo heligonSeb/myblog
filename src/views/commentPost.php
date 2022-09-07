@@ -33,10 +33,12 @@
     
                                         <p class="card-text"><?= $comment->comment ?></p>
 
-                                        <button type="submit" class="btn btn-success d-ms-none col-12">
-                                            <i class="bi bi-check2-square"></i>
-                                            Valider le commentaire
-                                        </button>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-success d-ms-none col-12 col-md-6 m-md-auto">
+                                                <i class="bi bi-check2-square"></i>
+                                                Valider le commentaire
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

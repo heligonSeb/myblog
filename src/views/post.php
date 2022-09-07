@@ -7,10 +7,12 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h1 class="card-title"><?= $post->title ?></h1>
                         
-                        <a href="?page=post&action=editpostform&post=<?= $post->id ?>" class="btn btn-success d-none d-md-block">
-                            <i class="bi bi-pencil-square"></i>
-                            Modifier
-                        </a>
+                        <?php if(isset($_SESSION['user'])) : ?>
+                            <a href="?page=post&action=editpostform&post=<?= $post->id ?>" class="btn btn-success d-none d-md-block">
+                                <i class="bi bi-pencil-square"></i>
+                                Modifier
+                            </a>
+                        <?php endif ?>
                     </div>
             
                     <div class="text-muted fw-lighter fst-italic">

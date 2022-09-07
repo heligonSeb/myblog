@@ -35,13 +35,21 @@
                     </div>
 
                     <div class="mt-4 row g-2">
-                        <button type="submit" class="btn btn-primary col-12 col-md">
-                            Enregistrer
-                        </button>
+                        <div class="col-12 col-md-6">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary col-12 col-md">
+                                    Enregistrer
+                                </button>
+                            </div>
+                        </div>
 
-                        <a href="?page=login" class="btn btn-secondary col-12 col-md">
-                            cancel
-                        </a>
+                        <div class="col-12 col-md-6">
+                            <div class="d-grid">
+                                <a href="?page=login" class="btn btn-secondary col-12 col-md">
+                                    cancel
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

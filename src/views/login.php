@@ -3,6 +3,8 @@
     <div class="container my-4">
         <div class="card">
             <div class="card-body">
+                <h1 class="text-center mb-4">Se connecter</h1>
+                
                 <form action="?page=login&action=connect" method="POST">
                     <?php if(isset($message)) :?>
                         <div class="alert alert-danger text-center" role="alert" id="login-error-message">
@@ -21,14 +23,22 @@
                     </div>
 
                     <div class="text-center">
-                        <div class="mb-4">
-                            <button type="submit" class="btn btn-primary col-12 mb-2">
-                                Connexion
-                            </button>
+                        <div class="row g-2 mb-4">
+                            <div class="col-12 col-md-6">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary col-12 mb-2">
+                                        Connexion
+                                    </button>
+                                </div>
+                            </div>
 
-                            <a href="/" class="btn btn-secondary col-12">
-                                Annuler
-                            </a>
+                            <div class="col-12 col-md-6">
+                                <div class="d-grid">
+                                    <a href="/" class="btn btn-secondary col-12">
+                                        Annuler
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         
                         <div>

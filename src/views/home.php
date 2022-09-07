@@ -21,7 +21,7 @@
         </div>
     </section>
 
-    <section id="contact" class="py-4">
+    <section id="contact" class="py-4 container">
         <h2 class="text-center mb-4">Besoin de moi ?</h2>
 
         <form action="?page=sendmail" method="POST" class="form px-2">

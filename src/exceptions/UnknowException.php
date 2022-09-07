@@ -3,13 +3,13 @@
 
 namespace App\exceptions;
 
-class SystemException extends \Exception implements AppException {
+class UnknownException extends \Exception implements AppException {
     /**
      * Return the picture name
      * @return String
      */
     public function getImg() {
-        return 'system.jpg';
+        return 'unknown.jpg';
     }
 
     /**
@@ -17,6 +17,7 @@ class SystemException extends \Exception implements AppException {
      * @return String
      */
     public function getAlt() {
-        return 'erreur système';
+        return 'erreur inconnu';
     }
 }
+

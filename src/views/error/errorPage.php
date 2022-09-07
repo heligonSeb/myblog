@@ -6,7 +6,7 @@
         Accueil
     </a>
 
-    <img class="img-fluid" src="./media/<?= $error['img'] ?>" alt="<?= $error['alt'] ?>" />
+    <img class="img-fluid" src="./media/<?= $error->getImg() ?>" alt="<?= $error->getAlt() ?>" />
 </div>
 
 <?php $content= ob_get_clean(); ?>
