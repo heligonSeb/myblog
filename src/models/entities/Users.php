@@ -14,20 +14,26 @@ class Users
 
     /**
      * Creat a fullName with the lastname and firstname
+     * 
+     * @return string
      */
-    public function fullName() {
+    public function fullName() 
+    {
         return ucfirst($this->lastname) .' '. ucfirst($this->firstname);
     }
 
     /**
      * Check if the password is good
      * 
-     * @param {String}  $password       the passeword to check
+     * @param string $password
+     *      Password to check
      * 
-     * @return {Boolean}    -true if the passeword it's good
-     *                      -false if the password is wrong
+     * @return boolean    
+     *      True if the passeword it's good,
+     *      False if the password is wrong
      */
-    public function checkPassword($password) {
+    public function checkPassword($password) 
+    {
         return password_verify($password, $this->password);
     }
 }

@@ -2,17 +2,19 @@
 
 namespace App\services\router;
 
-use App\controllers\AuthController;
-use App\controllers\HomeController;
-use App\controllers\ErrorController;
-use App\controllers\PostController;
-use App\controllers\CommentsController;
-use App\controllers\ContactController;
+use App\controllers\{
+    PostController,
+    AuthController,
+    HomeController,
+    CommentsController,
+    ContactController
+};
 use App\exceptions\NotFoundException;
 
 class Router
 {
-    public function route($page) {
+    public function route($page)
+    {
         $page = $page ? $page : 'home';
 
         if(!isset($_GET['action'])) {

@@ -11,7 +11,8 @@ class ErrorController
      * Show the erreur with the good informations
      * @param AppException $error
      */
-    public function showError($error) {
+    public function showError($error) 
+    {
         include '../src/views/error/errorPage.php';
     }
 }
