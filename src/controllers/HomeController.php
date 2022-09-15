@@ -7,7 +7,8 @@ class HomeController
     /**
      * Show the home page
      */
-    public function getHomePage() {
+    public function getHomePage() 
+    {
         include '../src/views/home.php';
     }
 }

@@ -5,12 +5,14 @@ namespace App\controllers;
 
 use App\models\repositories\UsersRepository;
 
-class AuthController {
+class AuthController 
+{
     /**
      * Login to the website with an email and password
      * and redirect to home page
      */
-    public function connect() {
+    public function connect() 
+    {
         $message = null;
 
         if(!isset($_POST['email']) && !isset($_POST['password'])) {
@@ -46,7 +48,8 @@ class AuthController {
     /**
      * Add an user in database and then use the methods connect() for login to the website
      */
-    public function addUser() {
+    public function addUser() 
+    {
         if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             $this->errorMessage('Veuillez remplir les champs du formulaire');
 
@@ -73,7 +76,8 @@ class AuthController {
      * Logoff to the website
      * and redirect to home page
      */
-    public function logoff() {
+    public function logoff() 
+    {
         session_unset();
         session_destroy();
 
@@ -82,23 +86,27 @@ class AuthController {
     
     /**
      * Return an Error message with session
-     * @param String    $message        the error message
+     * @param string $message
+     *      The error message
      */
-    public function errorMessage($message) {
+    public function errorMessage($message) 
+    {
         header('Location: /login?error='.urlencode($message));
     }
 
     /**
      * Show the login page
      */
-    public function getLoginPage() {
+    public function getLoginPage() 
+    {
         include '../src/views/login.php';
     }
 
     /**
      * Show the login page
      */
-    public function getRegisterPage() {
+    public function getRegisterPage() 
+    {
         include '../src/views/register.php';
     }
 }

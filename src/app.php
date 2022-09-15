@@ -2,9 +2,11 @@
 
 use App\services\router\Router;
 use App\controllers\ErrorController;
-use App\exceptions\AppException;
-use App\exceptions\UnknownException;
-use App\exceptions\SystemException;
+use App\exceptions\{
+    AppException,
+    UnknownException,
+    SystemException
+};
 
 session_start();
 

@@ -18,11 +18,15 @@ class PostRepository
     /**
      * Insert a new post in database
      * 
-     * @param {String} $title       the post title
-     * @param {String} $intro       the post intro, short text
-     * @param {String} $content     the post content
+     * @param string $title
+     *      Post title
+     * @param string $intro
+     *      Post intro, short text
+     * @param string $content
+     *      Post content
      */
-    public function add($title, $intro, $content) {
+    public function add($title, $intro, $content) 
+    {
         $id = 2;
 
         $query = 'INSERT INTO post(title,intro,content,creat_date,edit_date,user_id) VALUES (:title, :intro, :content, NOW(), null, :id)';
@@ -34,12 +38,17 @@ class PostRepository
     /**
      * Update a post in database
      * 
-     * @param String $title       the post title
-     * @param String $intro       the post intro, short text
-     * @param String $content     the post content
-     * @param Integer $id         the id of the post to update
+     * @param string $title
+     *      Post title
+     * @param string $intro
+     *      Post intro, short text
+     * @param string $content
+     *      Post content
+     * @param integer $id
+     *      Id of the post to update
      */
-    public function edit($title, $intro, $content, $id) {
+    public function edit($title, $intro, $content, $id) 
+    {
         $query = 'UPDATE post SET title=:title, intro=:intro, content=:content, edit_date=NOW() WHERE id=:id';
 
         $q = $this->db->prepare($query);
@@ -48,9 +57,11 @@ class PostRepository
 
     /**
      * Get all the Post from database
+     * 
      * @return Post[]
      */
-    public function getPostList() {
+    public function getPostList() 
+    {
         $query = 'SELECT * FROM post';
         
         $q = $this->db->prepare($query);
@@ -62,11 +73,14 @@ class PostRepository
 
     /**
      * Get one post from database with id as match
-     * @param Integer      the id of a post
      * 
-     * @return Object
+     * @param integer $id
+     *      Id of a post
+     * 
+     * @return Post
      */
-    public function getPost($id) {
+    public function getPost($id) 
+    {
         $query = 'SELECT * FROM post WHERE id=:id';
 
         $q = $this->db->prepare($query);
@@ -76,5 +90,19 @@ class PostRepository
         $result = $q->fetch();
 
         return $result;
+    }
+
+    /**
+     * Delete a blog post from database
+     * 
+     * @param integer $id
+     *      Id of a post
+     */
+    public function delete($id) 
+    {
+        $query = 'DELETE FROM post WHERE id=:id';
+
+        $q = $this->db->prepare($query);
+        $q->execute(['id' => intval($id)]);
     }
 }

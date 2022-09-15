@@ -9,12 +9,19 @@ use App\models\repositories\CommentsRepository;
 
 
 
-class CommentsController {
+class CommentsController 
+{
     /**
      * Creat a comment from post
      * and redirect to the post page
+     * 
+     * @throws ForbiddenException
+     *      If it's not a user
+     * @throws SystemException
+     *      If the field 'title' et 'comment' et 'post_id' not exist or null
      */
-    public function actionAdd() {
+    public function actionAdd() 
+    {
         if(!isset($_SESSION['user'])) {
             throw new ForbiddenException();
         }
@@ -29,9 +36,7 @@ class CommentsController {
             throw new SystemException();      
         }
 
-
         (new CommentsRepository())->add($title, $comment, $post_id, $user);
-
 
         header('Location: ?page=post&post='.$post_id);
     }
@@ -39,14 +44,17 @@ class CommentsController {
     /**
      * Validate an comment for can be show with the post
      * and redirect to the post page
+     * 
+     * @throws ForbiddenException
+     *      If the user not exist or if user exist but it's not an admin
      */
-    public function validateComment() {
+    public function validateComment() 
+    {
         if(!isset($_SESSION['user']) || $_SESSION['user']->status !== 'admin') {
             throw new ForbiddenException();
         }
 
         (new CommentsRepository())->validate($_POST['commentId']);
-
 
         header('Location: ?page=post&post='.$_GET['post']);
     }

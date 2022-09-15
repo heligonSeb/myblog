@@ -2,20 +2,25 @@
 
 namespace App\exceptions;
 
-class NotFoundException extends \Exception implements AppException {
+class NotFoundException extends \Exception implements AppException 
+{
     /**
      * Return the picture name
-     * @return String
+     * 
+     * @return string
      */
-    public function getImg() {
+    public function getImg() 
+    {
         return '404.jpg';
     }
 
     /**
      * Return the kind of erreur, will be use in the alt of <img>
-     * @return String
+     * 
+     * @return string
      */
-    public function getAlt() {
+    public function getAlt() 
+    {
         return 'page introuvable';
     }
 }

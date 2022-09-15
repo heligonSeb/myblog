@@ -9,7 +9,6 @@ use App\models\entities\Users;
 class UsersRepository 
 {
     private $db;
-    const TABLE="users";
 
     public function __construct()
     {
@@ -19,11 +18,13 @@ class UsersRepository
     /**
      * Get all informations of an user from database with an id
      * 
-     * @param {String} $id     the id of an user
+     * @param String $id
+     *      Id of an user
      * 
      * @return Users
      */
-    public function getUser($id) {
+    public function getUser($id) 
+    {
         $query = 'SELECT * FROM users WHERE id=:id';
 
         $q = $this->db->prepare($query);
@@ -38,11 +39,13 @@ class UsersRepository
     /**
      * Get all informations of an user from database with an email
      * 
-     * @param {String} $email     the email of an user
+     * @param string $email
+     *      Email of an user
      * 
      * @return Users
      */
-    public function getUserByEmail($email) {
+    public function getUserByEmail($email) 
+    {
         $query = 'SELECT * FROM users WHERE email=:email';
 
         $q = $this->db->prepare($query);
@@ -57,12 +60,17 @@ class UsersRepository
     /**
      * Insert a new user in database
      * 
-     * @param {String} $lastname        lastname of the user
-     * @param {String} $firstname       firstname of the user
-     * @param {String} $email           email of the user
-     * @param {String} $password        password for the user
+     * @param string $lastname
+     *      Lastname of the user
+     * @param string $firstname
+     *      Firstname of the user
+     * @param string $email
+     *      Email of the user
+     * @param string $password
+     *      Password for the user
      */
-    public function add($lastname, $firstname, $email, $password) {
+    public function add($lastname, $firstname, $email, $password) 
+    {
         $query = 'INSERT INTO users (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
 
         $q = $this->db->prepare($query);
@@ -76,9 +84,12 @@ class UsersRepository
 
     /**
      * Check if the user exist in database
-     * @param {String} $email       Email of the user
+     * 
+     * @param string $email
+     *      Email of the user
      */
-    public function userExist($email) {
+    public function userExist($email) 
+    {
         $user = $this->getUserByEmail($email);
 
         if(!$user) {
