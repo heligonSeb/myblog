@@ -32,6 +32,10 @@ class Router
                         case 'editpostform':
                             (new PostController())->getEditPostPage($_GET['post']);
                             break;
+
+                        case 'delete':
+                            (new PostController())->actionDelete($_GET['post']);
+                            break;
                         
                         default:
                             (new PostController())->getPost($_GET['post']);

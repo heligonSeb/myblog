@@ -1,62 +1,61 @@
 <?php
 
-
 namespace App\controllers;
 
 use App\models\repositories\UsersRepository;
 
-class AuthController 
+class AuthController
 {
     /**
      * Login to the website with an email and password
-     * and redirect to home page
+     * and redirect to home page.
      */
-    public function connect() 
+    public function connect()
     {
         $message = null;
 
-        if(!isset($_POST['email']) && !isset($_POST['password'])) {
+        if (!isset($_POST['email']) && !isset($_POST['password'])) {
             $message = 'Veuillez remplir les champs du formulaire';
-            
+
             return include '../src/views/login.php';
         }
-        
-        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $message = 'Format de mail invalide';
 
             return include '../src/views/login.php';
         }
 
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
-        
-        if(!$user) {
+
+        if (!$user) {
             $message = 'Votre email ou mot de passe incorrect';
 
             return include '../src/views/login.php';
         }
 
-        if(!$user->checkPassword($_POST['password'])) {
+        if (!$user->checkPassword($_POST['password'])) {
             $message = 'Votre email ou mot de passe incorrect';
 
             return include '../src/views/login.php';
-        } 
+        }
 
         $_SESSION['user'] = $user;
         header('Location: /');
     }
 
     /**
-     * Add an user in database and then use the methods connect() for login to the website
+     * Add an user in database and then use the methods connect() for login to the website.
      */
-    public function addUser() 
+    public function addUser()
     {
-        if(!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
+        if (!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             $this->errorMessage('Veuillez remplir les champs du formulaire');
 
             return;
         }
 
-        if(!(new UsersRepository())->userExist($_POST['email'])) {
+        if (!(new UsersRepository())->userExist($_POST['email'])) {
             $this->errorMessage('Utilisateur déja existant');
 
             return;
@@ -74,38 +73,39 @@ class AuthController
 
     /**
      * Logoff to the website
-     * and redirect to home page
+     * and redirect to home page.
      */
-    public function logoff() 
+    public function logoff()
     {
         session_unset();
         session_destroy();
 
         header('Location: /');
     }
-    
+
     /**
-     * Return an Error message with session
+     * Return an Error message with session.
+     *
      * @param string $message
-     *      The error message
+     *                        The error message
      */
-    public function errorMessage($message) 
+    public function errorMessage($message)
     {
         header('Location: /login?error='.urlencode($message));
     }
 
     /**
-     * Show the login page
+     * Show the login page.
      */
-    public function getLoginPage() 
+    public function getLoginPage()
     {
         include '../src/views/login.php';
     }
 
     /**
-     * Show the login page
+     * Show the login page.
      */
-    public function getRegisterPage() 
+    public function getRegisterPage()
     {
         include '../src/views/register.php';
     }

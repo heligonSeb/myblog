@@ -181,11 +181,13 @@ class PostController
 
         $comments = (new CommentsRepository())->getAllComments($id);
 
-
-
-
-
-        $message = `Le blog post ${$id} à bien été supprimé`;
+        $_SESSION['message'] = [
+            'content' => `Le blog post {$id} à bien été supprimé`,
+            'color' => 'success'
+        ];
+        
+        // after echo do :
+        //unset($_SESSION['message']);
 
         header('Location: ?page=post');
     }

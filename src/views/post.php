@@ -8,9 +8,15 @@
                         <h1 class="card-title"><?= $post->title ?></h1>
                         
                         <?php if(isset($_SESSION['user'])) : ?>
+                            
                             <a href="?page=post&action=editpostform&post=<?= $post->id ?>" class="btn btn-success d-none d-md-block">
                                 <i class="bi bi-pencil-square"></i>
                                 Modifier
+                            </a>
+
+                            <a href="?page=post&action=delete&post=<?= $post->id ?>" class="btn btn-danger d-none d-md-block">
+                                <i class="bi bi-trash" ></i>
+                                Supprimer
                             </a>
                         <?php endif ?>
                     </div>
@@ -46,6 +52,11 @@
                             <a href="?page=post&action=editpostform&post=<?= $post->id ?>" class="btn btn-success col-12 d-md-none ">
                                 <i class="bi bi-pencil-square"></i>
                                 Modifier
+                            </a>
+
+                            <a href="?page=post&action=delete&post=<?= $post->id ?>" class="btn btn-danger col-12 d-md-none">
+                                <i class="bi bi-trash"></i>
+                                Supprimer
                             </a>
                         <?php endif ?>
                         

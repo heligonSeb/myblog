@@ -12,12 +12,12 @@ L'objectif du projet est de créer un blog professionnel pour avoir une visibili
 ```
 ### Création des tables
 ```shell
-wget https://github.com/heligonSeb/myblog/blob/main/src/services/database/createTable.sql
+wget https://github.com/heligonSeb/myblog/blob/main/sql/createTable.sql
 ```
 
 ### Ajout de donnée
 ```shell
-wget https://github.com/heligonSeb/myblog/blob/main/src/services/database/addData.sql
+wget https://github.com/heligonSeb/myblog/blob/main/sql/addData.sql
 ```
 
 ## Configuration du projet
