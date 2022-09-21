@@ -36,5 +36,6 @@ class ContactController
         ];
 
         header('Location: /');
+        return;
     }
 }

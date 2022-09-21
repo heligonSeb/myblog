@@ -26,7 +26,6 @@ class PostRepository
      */
     public function add($title, $intro, $content, $id)
     {
-        // $id = 2;
         $query = 'INSERT INTO post(title,intro,content,creat_date,edit_date,user_id) VALUES (:title, :intro, :content, NOW(), null, :id)';
 
         $q = $this->db->prepare($query);

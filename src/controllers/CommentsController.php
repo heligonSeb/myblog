@@ -41,6 +41,7 @@ class CommentsController
         ];
 
         header('Location: ?page=post&post='.$post_id);
+        return;
     }
 
     /**
@@ -59,5 +60,6 @@ class CommentsController
         (new CommentsRepository())->validate($_POST['commentId']);
 
         header('Location: ?page=post&post='.$_GET['post']);
+        return;
     }
 }

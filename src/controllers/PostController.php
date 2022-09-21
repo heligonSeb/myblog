@@ -95,7 +95,6 @@ class PostController
             $intro = $_POST['intro'];
             $content = $_POST['content'];
         } else {
-            // throw new SystemException();
             $_SESSION['message'] = [
                 'color' => 'danger',
                 'content' => 'Remplir tous les champs du formulaire.',
@@ -135,13 +134,13 @@ class PostController
             $content = $_POST['content'];
             $id = $_POST['post_id'];
         } else {
-            // throw new SystemException();
             $_SESSION['message'] = [
                 'color' => 'danger',
                 'content' => 'Remplir tous les champs du formulaire',
             ];
 
             header('Location: ?page=post&action=editpostform&post='.$_POST['post_id']);
+            return;
         }
 
         (new PostRepository())->edit($title, $intro, $content, $id);
@@ -152,6 +151,7 @@ class PostController
         ];
 
         header('Location: ?page=post&post='.$id);
+        return;
     }
 
     /**
@@ -204,5 +204,6 @@ class PostController
         ];
 
         header('Location: ?page=post');
+        return;
     }
 }

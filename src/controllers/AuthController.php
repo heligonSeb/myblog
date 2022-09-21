@@ -19,6 +19,7 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+            return;
         }
 
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -28,6 +29,7 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+            return;
         }
 
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
@@ -39,6 +41,7 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+            return;
         }
 
         if (!$user->checkPassword($_POST['password'])) {
@@ -48,10 +51,12 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+            return;
         }
 
         $_SESSION['user'] = $user;
         header('Location: /');
+        return;
     }
 
     /**
@@ -66,6 +71,7 @@ class AuthController
             ];
 
             header('Location: ?page=register');
+            return;
         }
 
         if (!(new UsersRepository())->userExist($_POST['email'])) {
@@ -75,6 +81,7 @@ class AuthController
             ];
 
             header('Location: ?page=register');
+            return;
         }
 
         (new UsersRepository())->add(
@@ -97,6 +104,7 @@ class AuthController
         session_destroy();
 
         header('Location: /');
+        return;
     }
 
     /**
