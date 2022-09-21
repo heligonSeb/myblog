@@ -1,12 +1,11 @@
 <?php
 
-
 namespace App\models\repositories;
 
-use App\services\database\Database;
 use App\models\entities\Users;
+use App\services\database\Database;
 
-class UsersRepository 
+class UsersRepository
 {
     private $db;
 
@@ -16,14 +15,14 @@ class UsersRepository
     }
 
     /**
-     * Get all informations of an user from database with an id
-     * 
-     * @param String $id
-     *      Id of an user
-     * 
+     * Get all informations of an user from database with an id.
+     *
+     * @param string $id
+     *                   Id of an user
+     *
      * @return Users
      */
-    public function getUser($id) 
+    public function getUser($id)
     {
         $query = 'SELECT * FROM users WHERE id=:id';
 
@@ -32,19 +31,19 @@ class UsersRepository
         $q->setFetchMode(\PDO::FETCH_CLASS, Users::class);
 
         $result = $q->fetch();
-        
+
         return $result;
     }
 
     /**
-     * Get all informations of an user from database with an email
-     * 
+     * Get all informations of an user from database with an email.
+     *
      * @param string $email
-     *      Email of an user
-     * 
+     *                      Email of an user
+     *
      * @return Users
      */
-    public function getUserByEmail($email) 
+    public function getUserByEmail($email)
     {
         $query = 'SELECT * FROM users WHERE email=:email';
 
@@ -58,18 +57,18 @@ class UsersRepository
     }
 
     /**
-     * Insert a new user in database
-     * 
+     * Insert a new user in database.
+     *
      * @param string $lastname
-     *      Lastname of the user
+     *                          Lastname of the user
      * @param string $firstname
-     *      Firstname of the user
+     *                          Firstname of the user
      * @param string $email
-     *      Email of the user
+     *                          Email of the user
      * @param string $password
-     *      Password for the user
+     *                          Password for the user
      */
-    public function add($lastname, $firstname, $email, $password) 
+    public function add($lastname, $firstname, $email, $password)
     {
         $query = 'INSERT INTO users (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
 
@@ -78,21 +77,21 @@ class UsersRepository
             'lastname' => $lastname,
             'firstname' => $firstname,
             'email' => $email,
-            'password' => $password
+            'password' => $password,
         ]);
     }
 
     /**
-     * Check if the user exist in database
-     * 
+     * Check if the user exist in database.
+     *
      * @param string $email
-     *      Email of the user
+     *                      Email of the user
      */
-    public function userExist($email) 
+    public function userExist($email)
     {
         $user = $this->getUserByEmail($email);
 
-        if(!$user) {
+        if (!$user) {
             return true;
         }
 

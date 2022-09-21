@@ -12,32 +12,42 @@ class AuthController
      */
     public function connect()
     {
-        $message = null;
-
         if (!isset($_POST['email']) && !isset($_POST['password'])) {
-            $message = 'Veuillez remplir les champs du formulaire';
+            $_SESSION['message'] = [
+                'color' => 'danger',
+                'content' => 'Veuillez remplir les champs du formulaire',
+            ];
 
-            return include '../src/views/login.php';
+            header('Location: ?page=login');
         }
 
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $message = 'Format de mail invalide';
+            $_SESSION['message'] = [
+                'color' => 'danger',
+                'content' => 'Format de mail invalide',
+            ];
 
-            return include '../src/views/login.php';
+            header('Location: ?page=login');
         }
 
         $user = (new UsersRepository())->getUserByEmail($_POST['email']);
 
         if (!$user) {
-            $message = 'Votre email ou mot de passe incorrect';
+            $_SESSION['message'] = [
+                'color' => 'danger',
+                'content' => 'Votre email ou mot de passe est incorrect',
+            ];
 
-            return include '../src/views/login.php';
+            header('Location: ?page=login');
         }
 
         if (!$user->checkPassword($_POST['password'])) {
-            $message = 'Votre email ou mot de passe incorrect';
+            $_SESSION['message'] = [
+                'color' => 'danger',
+                'content' => 'Votre email ou mot de passe est incorrect',
+            ];
 
-            return include '../src/views/login.php';
+            header('Location: ?page=login');
         }
 
         $_SESSION['user'] = $user;
@@ -50,15 +60,21 @@ class AuthController
     public function addUser()
     {
         if (!isset($_POST['lastname']) || !isset($_POST['firstname']) || !isset($_POST['email']) || !isset($_POST['password'])) {
-            $this->errorMessage('Veuillez remplir les champs du formulaire');
+            $_SESSION['message'] = [
+                'color' => 'danger',
+                'content' => 'Veuillez remplir les champs du formulaire',
+            ];
 
-            return;
+            header('Location: ?page=register');
         }
 
         if (!(new UsersRepository())->userExist($_POST['email'])) {
-            $this->errorMessage('Utilisateur déja existant');
+            $_SESSION['message'] = [
+                'color' => 'danger',
+                'content' => 'Utilisateur déja existant',
+            ];
 
-            return;
+            header('Location: ?page=register');
         }
 
         (new UsersRepository())->add(
@@ -81,17 +97,6 @@ class AuthController
         session_destroy();
 
         header('Location: /');
-    }
-
-    /**
-     * Return an Error message with session.
-     *
-     * @param string $message
-     *                        The error message
-     */
-    public function errorMessage($message)
-    {
-        header('Location: /login?error='.urlencode($message));
     }
 
     /**

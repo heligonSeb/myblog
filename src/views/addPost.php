@@ -37,7 +37,7 @@
             </div>
         </form>
     </section>
-<?php $content= ob_get_clean(); ?>
+<?php $content = ob_get_clean(); ?>
 
-<?php include '../src/views/templates/html.php' ?>
+<?php include '../src/views/templates/html.php'; ?>
 

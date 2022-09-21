@@ -2,12 +2,12 @@
 
 namespace App\controllers;
 
-class HomeController 
+class HomeController
 {
     /**
-     * Show the home page
+     * Show the home page.
      */
-    public function getHomePage() 
+    public function getHomePage()
     {
         include '../src/views/home.php';
     }

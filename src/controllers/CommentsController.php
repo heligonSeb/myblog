@@ -35,6 +35,11 @@ class CommentsController
 
         (new CommentsRepository())->add($title, $comment, $post_id, $user);
 
+        $_SESSION['message'] = [
+            'color' => 'success',
+            'content' => 'Commentaire ajouté.',
+        ];
+
         header('Location: ?page=post&post='.$post_id);
     }
 

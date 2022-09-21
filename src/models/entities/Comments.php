@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\models\entities;
 
 class Comments
@@ -13,4 +12,3 @@ class Comments
     public $user_id;
     public $post_id;
 }
-

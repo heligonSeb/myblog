@@ -1,28 +1,26 @@
 <?php
 
-
 namespace App\exceptions;
 
-class UnknownException extends \Exception implements AppException 
+class UnknownException extends \Exception implements AppException
 {
     /**
-     * Return the picture name
-     * 
+     * Return the picture name.
+     *
      * @return string
      */
-    public function getImg() 
+    public function getImg()
     {
         return 'unknown.jpg';
     }
 
     /**
-     * Return the kind of erreur, will be use in the alt of <img>
-     * 
+     * Return the kind of erreur, will be use in the alt of <img>.
+     *
      * @return string
      */
-    public function getAlt() 
+    public function getAlt()
     {
         return 'erreur inconnu';
     }
 }
-

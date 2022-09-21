@@ -2,9 +2,9 @@
 
 namespace App\exceptions;
 
-interface AppException 
+interface AppException
 {
-    function getImg();
-    function getAlt();
-}
+    public function getImg();
 
+    public function getAlt();
+}

@@ -5,17 +5,17 @@
         </a>
 
         <div class="d-flex ms-auto text-white resp-login">
-            <?php if(isset($_SESSION['user'])) : ?>
-                <div>Bonjour <?= $_SESSION['user']->firstname ?></div>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <div>Bonjour <?php echo $_SESSION['user']->firstname; ?></div>
     
                 <a href="?page=login&action=logoff" class="text-decoration-none text-danger ms-1">
                     <i class="bi bi-power"></i>
                 </a>
-            <?php else : ?>
+            <?php } else { ?>
                 <a href="?page=login" role="button" class="text-decoration-none text-white">
                     <i class="bi bi-person-fill"></i>
                 </a>
-            <?php endif ?>
+            <?php } ?>
         </div>
         
         <button class="navbar-toggler ico-btn p-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-expanded="false">
