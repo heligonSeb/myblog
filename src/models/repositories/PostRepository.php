@@ -23,6 +23,10 @@ class PostRepository
      *                        Post intro, short text
      * @param string $content
      *                        Post content
+     * @param integer $id
+     *                        user id
+     * 
+     * @return
      */
     public function add($title, $intro, $content, $id)
     {
@@ -43,6 +47,8 @@ class PostRepository
      *                        Post content
      * @param int    $id
      *                        Id of the post to update
+     * 
+     * @return
      */
     public function edit($title, $intro, $content, $id)
     {
@@ -94,6 +100,8 @@ class PostRepository
      *
      * @param int $id
      *                Id of a post
+     * 
+     * @return
      */
     public function delete($id)
     {

@@ -17,6 +17,8 @@ class PostController
      *
      * @throws SystemException
      *                         If can't find a post
+     * 
+     * @return
      */
     public function getList()
     {
@@ -40,6 +42,8 @@ class PostController
      *                           Not find the post
      * @throws SystemException
      *                           Don't find the user who write the post
+     * 
+     * @return
      */
     public function getPost($id)
     {
@@ -65,6 +69,8 @@ class PostController
      *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
+     * 
+     * @return
      */
     public function getAddPostPage()
     {
@@ -83,6 +89,8 @@ class PostController
      *                            If the user not exist or if user exist but it's not an admin
      * @throws SystemException
      *                            if the POST 'title' or 'intro' or 'content' not exist or is null
+     * 
+     * @return
      */
     public function actionAdd()
     {
@@ -101,6 +109,7 @@ class PostController
             ];
 
             header('Location: ?page=post&action=addpostform');
+            return;
         }
 
         (new PostRepository())->add($title, $intro, $content, $_SESSION['user']->id);
@@ -111,6 +120,7 @@ class PostController
         ];
 
         header('Location: ?page=post');
+        return;
     }
 
     /**
@@ -121,6 +131,8 @@ class PostController
      *                         If the user not exist or if user exist but it's not an admin
      * @throws SystemException
      *                         if the POST 'title' or 'intro' or 'content' or 'post_id' not exist or is null
+     * 
+     * @return
      */
     public function actionEdit()
     {
@@ -164,6 +176,8 @@ class PostController
      *                            If the user not exist or if user exist but it's not an admin
      * @throws NotFoundException
      *                            If not find the post to edit
+     * 
+     * @return
      */
     public function getEditPostPage($id)
     {
@@ -188,6 +202,8 @@ class PostController
      *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
+     * 
+     * @return
      */
     public function actionDelete($id)
     {

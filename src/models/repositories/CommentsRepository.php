@@ -46,6 +46,8 @@ class CommentsRepository
      *                        Id from a post where we add the comment
      * @param object $user
      *                        User connected
+     * 
+     * @return
      */
     public function add($title, $comment, $post_id, Users $user)
     {
@@ -66,6 +68,8 @@ class CommentsRepository
      *
      * @param int $id
      *                Id of the comment
+     * 
+     * @return
      */
     public function validate($id)
     {

@@ -12,6 +12,8 @@ class ContactController
      *
      * @throws SystemException
      *                         If the POST 'lastname' ou 'firstname' ou 'email' ou 'subject' ou 'content' not exist or is null
+     * 
+     * @return
      */
     public function send()
     {
