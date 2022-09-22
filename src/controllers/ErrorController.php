@@ -10,8 +10,6 @@ class ErrorController
      * Show the erreur with the good informations.
      *
      * @param AppException $error
-     * 
-     * @return
      */
     public function showError($error)
     {

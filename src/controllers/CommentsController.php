@@ -16,8 +16,6 @@ class CommentsController
      *                            If it's not a user
      * @throws SystemException
      *                            If the field 'title' et 'comment' et 'post_id' not exist or null
-     * 
-     * @return
      */
     public function actionAdd()
     {
@@ -52,8 +50,6 @@ class CommentsController
      *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
-     * 
-     * @return
      */
     public function validateComment()
     {

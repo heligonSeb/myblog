@@ -9,8 +9,6 @@ class AuthController
     /**
      * Login to the website with an email and password
      * and redirect to home page.
-     * 
-     * @return
      */
     public function connect()
     {
@@ -63,8 +61,6 @@ class AuthController
 
     /**
      * Add an user in database and then use the methods connect() for login to the website.
-     * 
-     * @return
      */
     public function addUser()
     {
@@ -101,8 +97,6 @@ class AuthController
     /**
      * Logoff to the website
      * and redirect to home page.
-     * 
-     * @return
      */
     public function logoff()
     {
@@ -115,8 +109,6 @@ class AuthController
 
     /**
      * Show the login page.
-     * 
-     * @return
      */
     public function getLoginPage()
     {
@@ -125,8 +117,6 @@ class AuthController
 
     /**
      * Show the login page.
-     * 
-     * @return
      */
     public function getRegisterPage()
     {
