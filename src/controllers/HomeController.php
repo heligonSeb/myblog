@@ -6,6 +6,8 @@ class HomeController
 {
     /**
      * Show the home page.
+     *
+     * @return void
      */
     public function getHomePage()
     {

@@ -10,11 +10,14 @@ use App\controllers\PostController;
 use App\exceptions\NotFoundException;
 
 class Router
-{   
+{
     /**
-     * Call a specific controler, will depend of the route
+     * Call a specific controler, will depend of the route.
+     *
      * @param string $page
-     *                      page name
+     *                     page name
+     *
+     * @return void
      */
     public function route($page)
     {

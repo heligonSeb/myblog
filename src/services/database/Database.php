@@ -9,7 +9,7 @@ class Database
     /**
      * Connect to the database only if not already connected.
      *
-     * @return object
+     * @return \PDO
      */
     public static function connexionDb()
     {

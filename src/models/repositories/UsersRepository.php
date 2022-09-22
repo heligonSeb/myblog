@@ -67,6 +67,8 @@ class UsersRepository
      *                          Email of the user
      * @param string $password
      *                          Password for the user
+     *
+     * @return void
      */
     public function add($lastname, $firstname, $email, $password)
     {
@@ -86,8 +88,8 @@ class UsersRepository
      *
      * @param string $email
      *                      Email of the user
-     * 
-     * @return boolean
+     *
+     * @return bool
      */
     public function userExist($email)
     {

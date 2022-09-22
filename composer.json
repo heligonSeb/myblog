@@ -14,5 +14,6 @@
         }
     },
     "require": {
+        "symfony/dotenv": "^6.1"
     }
 }

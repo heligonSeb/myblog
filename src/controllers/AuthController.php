@@ -9,6 +9,8 @@ class AuthController
     /**
      * Login to the website with an email and password
      * and redirect to home page.
+     *
+     * @return void
      */
     public function connect()
     {
@@ -19,6 +21,7 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+
             return;
         }
 
@@ -29,6 +32,7 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+
             return;
         }
 
@@ -41,6 +45,7 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+
             return;
         }
 
@@ -51,16 +56,20 @@ class AuthController
             ];
 
             header('Location: ?page=login');
+
             return;
         }
 
         $_SESSION['user'] = $user;
         header('Location: /');
+
         return;
     }
 
     /**
      * Add an user in database and then use the methods connect() for login to the website.
+     *
+     * @return void
      */
     public function addUser()
     {
@@ -71,6 +80,7 @@ class AuthController
             ];
 
             header('Location: ?page=register');
+
             return;
         }
 
@@ -81,6 +91,7 @@ class AuthController
             ];
 
             header('Location: ?page=register');
+
             return;
         }
 
@@ -97,6 +108,8 @@ class AuthController
     /**
      * Logoff to the website
      * and redirect to home page.
+     *
+     * @return void
      */
     public function logoff()
     {
@@ -104,11 +117,14 @@ class AuthController
         session_destroy();
 
         header('Location: /');
+
         return;
     }
 
     /**
      * Show the login page.
+     *
+     * @return void
      */
     public function getLoginPage()
     {
@@ -117,6 +133,8 @@ class AuthController
 
     /**
      * Show the login page.
+     *
+     * @return void
      */
     public function getRegisterPage()
     {

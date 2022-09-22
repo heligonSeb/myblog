@@ -12,6 +12,8 @@ class CommentsController
      * Creat a comment from post
      * and redirect to the post page.
      *
+     * @return void
+     *
      * @throws ForbiddenException
      *                            If it's not a user
      * @throws SystemException
@@ -41,12 +43,15 @@ class CommentsController
         ];
 
         header('Location: ?page=post&post='.$post_id);
+
         return;
     }
 
     /**
      * Validate an comment for can be show with the post
      * and redirect to the post page.
+     *
+     * @return void
      *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
@@ -60,6 +65,7 @@ class CommentsController
         (new CommentsRepository())->validate($_POST['commentId']);
 
         header('Location: ?page=post&post='.$_GET['post']);
+
         return;
     }
 }
