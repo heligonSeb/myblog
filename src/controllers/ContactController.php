@@ -21,7 +21,7 @@ class ContactController
             throw new SystemException();
         }
 
-        $to = ADMIN_EMAIL;
+        $to = $_ENV['ADMIN_EMAIL'];
         $subject = $_POST['subject'];
         $message = $_POST['content'];
         $headers = [
