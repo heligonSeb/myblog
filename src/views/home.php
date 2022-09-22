@@ -24,6 +24,10 @@
     <section id="contact" class="py-4 container">
         <h2 class="text-center mb-4">Besoin de moi ?</h2>
 
+        <?php if (isset($_SESSION['message'])) { ?>
+        <?php include '../src/views/templates/alert.php'; ?>
+        <?php } ?>
+
         <form action="?page=sendmail" method="POST" class="form px-2">
             <div>
                 <div class="mb-3 position-relative">
@@ -62,4 +66,4 @@
     </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php include '../src/views/templates/html.php' ?>
+<?php include '../src/views/templates/html.php'; ?>

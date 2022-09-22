@@ -2,28 +2,31 @@
 
 namespace App\services\router;
 
-use App\controllers\{
-    PostController,
-    AuthController,
-    HomeController,
-    CommentsController,
-    ContactController
-};
+use App\controllers\AuthController;
+use App\controllers\CommentsController;
+use App\controllers\ContactController;
+use App\controllers\HomeController;
+use App\controllers\PostController;
 use App\exceptions\NotFoundException;
 
 class Router
-{
+{   
+    /**
+     * Call a specific controler, will depend of the route
+     * @param string $page
+     *                      page name
+     */
     public function route($page)
     {
         $page = $page ? $page : 'home';
 
-        if(!isset($_GET['action'])) {
+        if (!isset($_GET['action'])) {
             $_GET['action'] = '';
         }
 
         switch ($page) {
             case 'post':
-                if(isset($_GET['post'])) {
+                if (isset($_GET['post'])) {
                     switch ($_GET['action']) {
                         case 'validatecomment':
                             (new CommentsController())->validateComment();
@@ -32,7 +35,11 @@ class Router
                         case 'editpostform':
                             (new PostController())->getEditPostPage($_GET['post']);
                             break;
-                        
+
+                        case 'delete':
+                            (new PostController())->actionDelete($_GET['post']);
+                            break;
+
                         default:
                             (new PostController())->getPost($_GET['post']);
                             break;
@@ -54,7 +61,7 @@ class Router
                         case 'editPost':
                             (new PostController())->actionEdit();
                             break;
-                        
+
                         default:
                             (new PostController())->getList();
                             break;
@@ -75,7 +82,7 @@ class Router
                     case 'logoff':
                         (new AuthController())->logoff();
                         break;
-                    
+
                     default:
                         (new AuthController())->getLoginPage();
                         break;
@@ -83,17 +90,17 @@ class Router
                 break;
 
             case 'register':
-                    (new AuthController())->getRegisterPage();
+                (new AuthController())->getRegisterPage();
                 break;
 
             case 'home':
                 (new HomeController())->getHomePage();
                 break;
 
-            case 'sendmail': 
+            case 'sendmail':
                 (new ContactController())->send();
                 break;
-            
+
             default:
                 throw new NotFoundException();
                 break;

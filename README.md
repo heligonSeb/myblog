@@ -8,21 +8,21 @@ L'objectif du projet est de créer un blog professionnel pour avoir une visibili
 
 ### Création de la base de donnée
 ```shell
-  CREATE DATABASE `blog` /*!40100 DEFAULT CHARACTER SET utf8 */;
+mysql -u [user] -p -e "CREATE DATABASE blog;"
 ```
 ### Création des tables
 ```shell
-wget https://github.com/heligonSeb/myblog/blob/main/src/services/database/createTable.sql
+mysql -u root blog -p < sql/createTable.sql
 ```
 
 ### Ajout de donnée
 ```shell
-wget https://github.com/heligonSeb/myblog/blob/main/src/services/database/addData.sql
+mysql -u root blog -p < sql/addData.sql
 ```
 
 ## Configuration du projet
 Pour configurer le projet il suffit de copier le fichier config.exemple.php qui se trouve a la racine du dossier src. 
-Puis de remplacer les informations à l'intérieur par vos informations.
+Puis de remplacer les informations à l'intérieur par vos informations et de renomer le fichier en "config.php".
 
 ## Lancement du serveur en local
 ```shell

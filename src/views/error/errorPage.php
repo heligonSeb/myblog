@@ -6,9 +6,9 @@
         Accueil
     </a>
 
-    <img class="img-fluid" src="./media/<?= $error->getImg() ?>" alt="<?= $error->getAlt() ?>" />
+    <img class="img-fluid" src="./media/<?php echo $error->getImg(); ?>" alt="<?php echo $error->getAlt(); ?>" />
 </div>
 
-<?php $content= ob_get_clean(); ?>
+<?php $content = ob_get_clean(); ?>
 
-<?php include '../src/views/templates/html.php' ?>
+<?php include '../src/views/templates/html.php'; ?>

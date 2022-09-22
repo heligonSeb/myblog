@@ -6,11 +6,9 @@
                 <h1 class="text-center mb-4">Se connecter</h1>
                 
                 <form action="?page=login&action=connect" method="POST">
-                    <?php if(isset($message)) :?>
-                        <div class="alert alert-danger text-center" role="alert" id="login-error-message">
-                            <?= $message ?>
-                        </div>
-                    <?php endif ?>
+                    <?php if (isset($_SESSION['message'])) { ?>
+                    <?php include '../src/views/templates/alert.php'; ?>
+                    <?php } ?>
 
                     <div class="mb-3 position-relative">
                         <input type="email" class="form-control form-custom-input" name="email" id="emailConnect" value="" placeholder=" " required>
@@ -52,4 +50,4 @@
 </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php include '../src/views/templates/html.php' ?>
+<?php include '../src/views/templates/html.php'; ?>

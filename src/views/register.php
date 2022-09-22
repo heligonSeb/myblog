@@ -6,11 +6,11 @@
                 <h1 class="card-title text-center mb-4">S'enregistrer</h1>
 
                 <form action="?page=login&action=addUser" method="POST">
-                    <?php if(isset($_SESSION['errorMessage'])) :?>
+                    <?php if (isset($_SESSION['errorMessage'])) { ?>
                         <div class="alert alert-danger text-center" role="alert">
-                            <?= $_SESSION['errorMessage'] ?>
+                            <?php echo $_SESSION['errorMessage']; ?>
                         </div>
-                    <?php endif ?>
+                    <?php } ?>
 
                     <div>
                         <div class="mb-3 position-relative">
@@ -58,4 +58,4 @@
 </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php include '../src/views/templates/html.php' ?>
+<?php include '../src/views/templates/html.php'; ?>

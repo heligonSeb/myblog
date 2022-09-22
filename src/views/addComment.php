@@ -4,7 +4,7 @@
             <h2 class="card-title text-center mb-4">Ajouter un commentaire</h2>
 
             <form action="?page=post&action=addComment" method="POST">
-                <input type="number" name="post_id" value="<?= $post->id ?>" hidden>
+                <input type="number" name="post_id" value="<?php echo $post->id; ?>" hidden>
 
                 <div class="mb-3 position-relative">
                     <input type="text" class="form-control form-custom-input" name="title" id="title" value="" placeholder=" " required>
