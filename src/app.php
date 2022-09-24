@@ -12,16 +12,8 @@ session_start();
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../.env');
 
-/* CONFIGURATION DE LA BASE DE DONNEE */
-define('DB_HOST', $_ENV['DB_HOST']);
-define('DB_USER', $_ENV['DB_USER']);
-define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
-define('DB_NAME', $_ENV['DB_NAME']);
-define('ADMIN_EMAIL', $_ENV['ADMIN_EMAIL']);
 
-/* CONFIG SITE */
-define('DEBUG', $_ENV['DEBUG']);
-if (DEBUG) {
+if ($_ENV['DEBUG']) {
     ini_set('display_errors', 1);
 }
 
