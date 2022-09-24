@@ -26,8 +26,8 @@ composer install
 ```
 
 ## Configuration du projet
-Pour configurer le projet il suffit de copier le fichier config.exemple.php qui se trouve a la racine du dossier src. 
-Puis de remplacer les informations à l'intérieur par vos informations et de renomer le fichier en "config.php".
+Pour configurer le projet il suffit de copier le fichier ".env.exemple" qui se trouve a la racine du projet. 
+Puis de remplacer les informations à l'intérieur par vos informations et de renomer le fichier en ".env".
 
 ## Lancement du serveur en local
 ```shell
