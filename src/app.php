@@ -12,11 +12,6 @@ session_start();
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../.env');
 
-
-if ($_ENV['DEBUG']) {
-    ini_set('display_errors', 1);
-}
-
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 try {
