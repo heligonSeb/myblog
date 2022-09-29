@@ -46,8 +46,8 @@ class CommentsRepository
      *                        Id from a post where we add the comment
      * @param object $user
      *                        User connected
-     * 
-     * @return
+     *
+     * @return void
      */
     public function add($title, $comment, $post_id, Users $user)
     {
@@ -68,8 +68,8 @@ class CommentsRepository
      *
      * @param int $id
      *                Id of the comment
-     * 
-     * @return
+     *
+     * @return void
      */
     public function validate($id)
     {
@@ -85,7 +85,7 @@ class CommentsRepository
      * @param string $postId
      *                       Id of the post
      *
-     * @return Comments[]
+     * @return void
      */
     public function deleteList($postId)
     {

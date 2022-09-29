@@ -15,17 +15,17 @@ class PostController
      * Get the list of all post
      * and show the page of all post.
      *
-     * @throws SystemException
-     *                         If can't find a post
-     * 
-     * @return
+     * @return void
      */
     public function getList()
     {
         $posts = (new PostRepository())->getPostList();
 
         if (!$posts) {
-            throw new SystemException();
+            $_SESSION['message'] = [
+                'color' => 'info',
+                'content' => 'Aucun post réalisé pour le moment.',
+            ];
         }
 
         include '../src/views/postList.php';
@@ -38,12 +38,12 @@ class PostController
      * @param int $id
      *                post id
      *
+     * @return void
+     *
      * @throws NotFoundException
      *                           Not find the post
      * @throws SystemException
      *                           Don't find the user who write the post
-     * 
-     * @return
      */
     public function getPost($id)
     {
@@ -67,10 +67,10 @@ class PostController
     /**
      * Show the adding form page.
      *
+     * @return void
+     *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
-     * 
-     * @return
      */
     public function getAddPostPage()
     {
@@ -85,12 +85,12 @@ class PostController
      * Creat new post
      * and redirect to the page of all post.
      *
+     * @return void
+     *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
      * @throws SystemException
      *                            if the POST 'title' or 'intro' or 'content' not exist or is null
-     * 
-     * @return
      */
     public function actionAdd()
     {
@@ -109,7 +109,6 @@ class PostController
             ];
 
             header('Location: ?page=post&action=addpostform');
-            return;
         }
 
         (new PostRepository())->add($title, $intro, $content, $_SESSION['user']->id);
@@ -120,19 +119,18 @@ class PostController
         ];
 
         header('Location: ?page=post');
-        return;
     }
 
     /**
      * Edit a post
      * and redirect the page of a post.
      *
+     * @return void
+     *
      * @throws SystemException
      *                         If the user not exist or if user exist but it's not an admin
      * @throws SystemException
      *                         if the POST 'title' or 'intro' or 'content' or 'post_id' not exist or is null
-     * 
-     * @return
      */
     public function actionEdit()
     {
@@ -152,7 +150,6 @@ class PostController
             ];
 
             header('Location: ?page=post&action=editpostform&post='.$_POST['post_id']);
-            return;
         }
 
         (new PostRepository())->edit($title, $intro, $content, $id);
@@ -163,7 +160,6 @@ class PostController
         ];
 
         header('Location: ?page=post&post='.$id);
-        return;
     }
 
     /**
@@ -172,12 +168,12 @@ class PostController
      * @param int $id
      *                Id of the post
      *
+     * @return void
+     *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
      * @throws NotFoundException
      *                            If not find the post to edit
-     * 
-     * @return
      */
     public function getEditPostPage($id)
     {
@@ -200,10 +196,10 @@ class PostController
      * @param int $id
      *                the id of a post
      *
+     * @return void
+     *
      * @throws ForbiddenException
      *                            If the user not exist or if user exist but it's not an admin
-     * 
-     * @return
      */
     public function actionDelete($id)
     {
@@ -220,6 +216,5 @@ class PostController
         ];
 
         header('Location: ?page=post');
-        return;
     }
 }
