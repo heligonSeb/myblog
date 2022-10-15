@@ -72,7 +72,7 @@ class UsersRepository
      */
     public function add($lastname, $firstname, $email, $password)
     {
-        $query = 'INSERT INTO users (lastname,firstname,email,password,validate,status) VALUES (:lastname,:firstname,:email,:password,0,"user")';
+        $query = "INSERT INTO users (lastname,firstname,email,password,status) VALUES (:lastname,:firstname,:email,:password,'user')";
 
         $q = $this->db->prepare($query);
         $q->execute([
