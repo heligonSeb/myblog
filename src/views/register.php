@@ -6,20 +6,18 @@
                 <h1 class="card-title text-center mb-4">S'enregistrer</h1>
 
                 <form action="?page=login&action=addUser" method="POST">
-                    <?php if (isset($_SESSION['errorMessage'])) { ?>
-                        <div class="alert alert-danger text-center" role="alert">
-                            <?php echo $_SESSION['errorMessage']; ?>
-                        </div>
+                    <?php if (isset($_SESSION['message'])) { ?>
+                    <?php include '../src/views/templates/alert.php'; ?>
                     <?php } ?>
 
                     <div>
                         <div class="mb-3 position-relative">
-                            <input type="email" class="form-control form-custom-input" name="email" id="lastnameRegister" value="" placeholder=" " required>
+                            <input type="text" class="form-control form-custom-input" name="firstname" id="lastnameRegister" value="" placeholder=" " required>
                             <label for="lastnameRegister" class="form-label form-custom-label position-absolute">Nom</label>
                         </div>
     
                         <div class="mb-3 position-relative">
-                            <input type="email" class="form-control form-custom-input" name="email" id="firstnameRegister" value="" placeholder=" " required>
+                            <input type="text" class="form-control form-custom-input" name="lastname" id="firstnameRegister" value="" placeholder=" " required>
                             <label for="firstnameRegister" class="form-label form-custom-label position-absolute">Prénom</label>
                         </div>
                     </div>
